@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
-import Home from './Home';
+import Home from './views/Home';
+import Registro from './views/Registro'
+import IniciarSesion from './views/IniciarSesion'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 
@@ -10,6 +12,8 @@ const Nav =()=>{
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name='Home' component ={Home} />
+                <Stack.Screen name='registro' component ={Registro} />
+                <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />
             </Stack.Navigator>            
         </NavigationContainer>
     )
