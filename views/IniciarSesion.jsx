@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {TouchableOpacity,Alert,ToastAndroid, Image, ImageBackground, StyleSheet, Text, TextInput,View } from 'react-native';
+import { connect } from 'react-redux';
+import userActions from '../redux/actions/userActions';
 
 
 const IniciarSesion =(props)=>{
@@ -12,6 +14,26 @@ const IniciarSesion =(props)=>{
         setNuevoUsario({...nuevoUsario, [name]:value})
     }
     const validar = async () =>{
+        if(nuevoUsario.cuenta ==='' || nuevoUsario.password ===''){
+            ToastAndroid.show('Todos los campos son requeridos',
+            ToastAndroid.TOP,25,
+            50)
+            return false   
+          }
+        const res = await props.iniciarSesion(nuevoUsario)
+        if(res && !res.success){
+            setErrores([res.mensaje])    
+            ToastAndroid.show('Usuario y/o contraseña incorrecto',
+            ToastAndroid.TOP,25,
+            50)
+            }else{
+                props.navigation.navigate('Home')
+                ToastAndroid.show('Bienvenido',
+                ToastAndroid.TOP,25,
+            50)
+            }
+          
+
         // const res = await props.newUser(nuevoUser)
         // if (res && !res.success){
         //     const errorDetails = res.errores.details
@@ -47,7 +69,7 @@ const IniciarSesion =(props)=>{
                     style={styles.inputs}
                     />
             </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={validar}>
                     <View style={styles.boton} >
                         <Text Text>Inciar sesion</Text>
                     </View>
@@ -77,11 +99,14 @@ const styles = StyleSheet.create({
     }
 
   })
-//   const mapStateToProps = state =>{
-//       return{
-//           loggedUser:state.loggedUser
-//       }
-//   }
+  const mapStateToProps = state =>{
+      return{
+          loggedUser:state.loggedUser
+      }
+  }
+  const mapDipachToProps ={
+    iniciarSesion:userActions.iniciarSesion
+  }
  
 
-  export default IniciarSesion
+  export default connect(mapStateToProps,mapDipachToProps)(IniciarSesion)
