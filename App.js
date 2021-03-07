@@ -1,21 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import 'react-native-gesture-handler';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Home from './views/Home'
-import Nav from './Nav';
-import {applyMiddleware, createStore } from 'redux';
-import { Provider } from 'react-redux';
-import userReducer from './redux/reducers/userReducers'
-import thunk from 'redux-thunk'
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import Nav from './views/Nav'
+import { Provider } from "react-redux"
+import { createStore, applyMiddleware } from 'redux'
+import thunk from "redux-thunk"
+import mainReducer from "./redux/reducers/mainReducer"
 
-const miStore = createStore(userReducer,applyMiddleware(thunk))
-
-const App =()=> {
+const App = () => {
+  const myStore = createStore(mainReducer, applyMiddleware(thunk))
   return (
-    <Provider store={miStore}>
+    <Provider store={myStore}>
       <Nav />
-    </Provider> 
-  );
+    </Provider>
+  )
 }
 export default App
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+})
