@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {TouchableOpacity,Alert,ToastAndroid, Image, ImageBackground, StyleSheet, Text, TextInput,View } from 'react-native';
 import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
-
+// import {
+//     GoogleSignin,
+//     GoogleSigninButton,
+//     statusCodes,
+//   } from '@react-native-google-signin/google-signin';
 
 const IniciarSesion =(props)=>{
     const [error, setError] = useState({})
@@ -32,6 +36,24 @@ const IniciarSesion =(props)=>{
             50)
             }
     }
+    // signIn = async () => {
+    //     try {
+    //       await GoogleSignin.hasPlayServices();
+    //       const userInfo = await GoogleSignin.signIn();
+    //       this.setState({ userInfo });
+    //     } catch (error) {
+    //       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+    //         // user cancelled the login flow
+    //       } else if (error.code === statusCodes.IN_PROGRESS) {
+    //         // operation (e.g. sign in) is in progress already
+    //       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+    //         // play services not available or outdated
+    //       } else {
+    //         // some other error happened
+    //       }
+    //     }
+    //   };
+
     return(
         <ImageBackground source={{uri:'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg'}} resizeMode='cover' style={{width:'100%', height:'100%', justifyContent:'center'}}>
             <View style={{paddingLeft:30}}>
@@ -52,6 +74,12 @@ const IniciarSesion =(props)=>{
                         <Text Text>Inciar sesion</Text>
                     </View>
               </TouchableOpacity>
+              <GoogleSigninButton
+                style={{ width: 192, height: 48 }}
+                size={GoogleSigninButton.Size.Wide}
+                color={GoogleSigninButton.Color.Dark}
+                onPress={this._signIn}
+                disabled={this.state.isSigninInProgress} />
         </ImageBackground>
     )
 }
