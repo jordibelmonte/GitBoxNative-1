@@ -14,25 +14,7 @@ const Registro =(props)=>{
         setNuevoUsario({...nuevoUsario, [name]:value})
     }
     const validar = async () =>{
-        // const res = await props.newUser(nuevoUser)
-        // if (res && !res.success){
-        //     const errorDetails = res.errores.details
-        //     const errores = {
-        //         nombre:null,apellido:null,email:null,password:null
-        //     }
-        //     errorDetails && errorDetails.map(error =>{
-        //         errores[error.context.label] = error.message
-        //         return false
-        //     })
-        //     setError(errores)
-        //     ToastAndroid.show('Something went wrong!',
-        //     ToastAndroid.SHORT)
-        // }
-        // else{
-        //     props.navigation.navigate('Home')
-        //     ToastAndroid.show('Create successful',
-        //     ToastAndroid.SHORT)
-        // }
+        
     }
     return(
         <ImageBackground source={{uri:'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg'}} resizeMode='cover' style={{width:'100%', height:'100%', justifyContent:'center'}}>

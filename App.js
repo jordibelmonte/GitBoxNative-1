@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import Nav from './views/Nav'
+import Nav from './Nav'
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware } from 'redux'
 import thunk from "redux-thunk"
