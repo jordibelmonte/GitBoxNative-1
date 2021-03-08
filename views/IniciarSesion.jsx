@@ -31,7 +31,7 @@ const IniciarSesion = (props) => {
         }
         const res = await props.iniciarSesion(nuevoUsario)
         if (res && !res.success) {
-            ToastAndroid.show('Usuario y/o contraseña incorrecto',
+            ToastAndroid.show('UPS!! Ocurrió un error! Inténtelo nuevamente',
                 ToastAndroid.TOP, 25,
                 50)
         } else {
@@ -54,12 +54,12 @@ const IniciarSesion = (props) => {
             if (result.type === 'success') {
                 return result.accessToken;
             } else {
-                console.log('cancelled')
+                setError('cancelled')
             }
         } catch (e) {
-            console.log('error', e)
+            setError('error', e)
         }
-        console.log(name)
+
         const googlee = await props.iniciarGoogle(name)
         console.log('ESTO ES GOOGLE')
         console.log(googlee)

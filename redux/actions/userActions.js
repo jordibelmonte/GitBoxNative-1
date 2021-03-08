@@ -6,13 +6,10 @@ const userActions = {
         return async (dispatch,getstate) => {
             try{
               const data = await axios.post("https://backend-giftbox.herokuapp.com/api/usuarios",nuevoUsario); 
-              console.log(data.data.success)
-              
               if (data.data.success){
-                console.log(data.data.response)
-                console.log("ACTIONS")                
+             
                 dispatch({type:'INICIAR_SESION', payload:data.data})
-                return data.data.response
+                return data.data
               } else{
                 return data.data
               }
@@ -36,7 +33,6 @@ const userActions = {
                     Authorization: `Bearer ${token}`
                 }
             })
-                console.log(respuesta)
                 dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
             } catch(err) {
                 localStorage.clear()
@@ -56,35 +52,26 @@ const userActions = {
       },
 
     iniciarSesion: (usuario) => {
-        console.log(usuario)
         return async (dispatch, getState) => {
             const respuesta = await axios.post('https://backend-giftbox.herokuapp.com/api/login', usuario)
             if (!respuesta.data.success) {
-                console.log(respuesta)
                 return respuesta.data
             }
             dispatch({type:'INICIAR_SESION', payload: respuesta.data})
         }
     },
     editUsuarioPass : (editUsuario, id) => {
-        console.log('llegue')
         return async (dispatch, getState)=> {
             const respuesta = await axios.put(`https://backend-giftbox.herokuapp.com/api/usuarios/${id}`, editUsuario)
-            console.log(respuesta)
             if(!respuesta.data.success){
-            console.log('me fui')
             return respuesta.data 
         }
         }
     },
     editarUsuarioImg : (formNuevaImg, id) => {
-        console.log('llegue a Imagen')
-
         return async (dispatch, getState)=> {
             const respuesta = await axios.put(`https://backend-giftbox.herokuapp.com/api/imagen/${id}`, formNuevaImg)
-            console.log(respuesta)
             if(!respuesta.data.success){
-            console.log('me fui')
             return respuesta.data 
         }
         }

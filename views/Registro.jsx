@@ -30,27 +30,18 @@ const Registro =(props)=>{
 
         const res = await props.crearCuenta(nuevoUsario)
 
-        console.log("MENSAJE RANDOM ANTES DEL IF")
-        console.log(res)
-
         if(res && !res.success){
             setError(res.error)
-            console.log("MENSAJE RANDOM ERROR")
-            console.log(res)
-            //  console.log(res.error)
-            // ToastAndroid.show('Usuario y/o contraseña incorrecto',
-            // ToastAndroid.TOP,25,
-            // 50)
+            ToastAndroid.show('Usuario y/o contraseña incorrecto',
+            ToastAndroid.TOP,25,
+            50)
         }
         else{
-                console.log("MENSAJE RANDOM")
-                console.log(res)
-                props.navigation.navigate('Home')
-            //     ToastAndroid.show('Bienvenido',
-            //     ToastAndroid.TOP,25,
-            // 50)
+            props.navigation.navigate('Home')
+            ToastAndroid.show('Bienvenido',
+            ToastAndroid.TOP,25,
+            50)
             }
-
     }
    
     return(
