@@ -9,7 +9,7 @@ import Carousel from 'react-native-snap-carousel';
 
 export default class App extends React.Component {
 
- 
+
     constructor(props){
         super(props);
         this.state = {

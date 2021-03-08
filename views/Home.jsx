@@ -3,12 +3,16 @@ import { ImageBackground, Text, TouchableOpacity, View,StyleSheet, ScrollView } 
 import Carrusel from './Carrusel'
 import LosMasRegalados from './LosMasRegalados'
 import Prueba from './Prueba'
-
-const Home =(props)=>{
-    console.log(props)
+import Header from './Header'
+import Paquetes from './Paquetes'
+const Home =(props)=>{    
     return (
         <ScrollView>
             <View style={{flex:1}}>
+                <Header />
+                <TouchableOpacity onPress={()=>props.navigation.navigate('paquetes')}>
+                    <Text>paqueres</Text>
+                </TouchableOpacity>
                 <ImageBackground source={{uri:'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg'}} resizeMode='cover' style={{width:'100%', height:600,justifyContent:'center'}}>
                     <View style={styles.contenedor}>
                         <Text style={styles.titulo} >Regalá experiencias</Text>

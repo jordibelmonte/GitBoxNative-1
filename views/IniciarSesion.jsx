@@ -59,13 +59,9 @@ const IniciarSesion = (props) => {
         } catch (e) {
             console.log('error', e)
         }
-        console.log(name)
         const googlee = await props.iniciarGoogle(name)
-        console.log('ESTO ES GOOGLE')
-        console.log(googlee)
 
     }
-
     return (
         <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: '100%', justifyContent: 'center' }}>
             <View style={{ paddingLeft: 30 }}>
@@ -99,7 +95,11 @@ const IniciarSesion = (props) => {
                 disabled={this.state.isSigninInProgress} />
         </ImageBackground >
     )
+    
 }
+
+
+
 const styles = StyleSheet.create({
     inputs: {
         backgroundColor: '#fafafa',
