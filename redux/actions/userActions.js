@@ -8,6 +8,7 @@ const userActions = {
                 headers: {"Content-Type": "multipart: form-data"}
               }); 
               console.log(data.data.success)
+              
               if (data.data.success){
                 console.log(data.data.response)
                 console.log("ACTIONS")                
