@@ -15,7 +15,7 @@ const Nav =()=>{
                 <Stack.Screen name='Home' component ={Home} />
                 <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />
-                <Stack.Screen name="SignIn" component={Paquete}/>
+                <Stack.Screen name='SignIn' component={Paquete}/>
             </Stack.Navigator>            
         </NavigationContainer>
     )
