@@ -54,11 +54,8 @@ const IniciarSesion =(props)=>{
           } catch (e) {
             console.log('error',e)
           }
-          console.log(name)
         const googlee = await props.iniciarGoogle(name)
-        console.log('ESTO ES GOOGLE')
-        console.log(googlee)
-        
+
     }
 
 

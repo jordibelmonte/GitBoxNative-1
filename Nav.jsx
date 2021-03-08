@@ -6,6 +6,7 @@ import IniciarSesion from './views/IniciarSesion'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Paquete from './Paquete'
+import Paquetes from './views/Paquetes'
 
 const Stack = createStackNavigator()
 const Nav =()=>{
@@ -16,6 +17,7 @@ const Nav =()=>{
                 <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />
                 <Stack.Screen name="SignIn" component={Paquete}/>
+                <Stack.Screen name='paquetes' component={Paquetes} />
             </Stack.Navigator>            
         </NavigationContainer>
     )
