@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import {TouchableOpacity,Alert,ToastAndroid, Image, ImageBackground, StyleSheet, Text, TextInput,View } from 'react-native';
+import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
 
 
 const Registro =(props)=>{
+    // console.log(props)
     const [error, setError] = useState({})
     const [nuevoUsario, setNuevoUsario] = useState({
         nombre: '',
@@ -14,22 +16,10 @@ const Registro =(props)=>{
     })
     const leerInput = (name, value)=>{
         setNuevoUsario({...nuevoUsario, [name]:value})
-        // NO HAY EVENTOS EN MOBILE
     }
+
     const validar = async () =>{
         setError([])
-        e.preventDefault()
-
-        const {nombre,apellido,cuenta,password} = nuevoUsario
-
-        let imagen = { uri: source.uri}
-        var formNuevoUsuario = new FormData();
-
-        formNuevoUsuario.append("nombre", nombre)
-        formNuevoUsuario.append("apellido", apellido)
-        formNuevoUsuario.append("cuenta", cuenta)
-        formNuevoUsuario.append("password", password)
-        formNuevoUsuario.append("googleUser", false)
 
         if(nuevoUsario.nombre === '' || nuevoUsario.apellido === ''||nuevoUsario.cuenta ==='' || nuevoUsario.password ===''){
             ToastAndroid.show('Todos los campos son requeridos',
@@ -37,18 +27,28 @@ const Registro =(props)=>{
             50)
             return false   
         }
-        const res = await props.crearCuenta(formNuevoUsuario)
+
+        const res = await props.crearCuenta(nuevoUsario)
+
+        console.log("MENSAJE RANDOM ANTES DEL IF")
+        console.log(res)
 
         if(res && !res.success){
-            // setError(res.error) COMO LOS TRAE EL BACK
-            // ToastAndroid.show('Usuario y/o contraseña incorrecto', ESTO TIENE QUE MAPEAR LOS ERRORES
+            setError(res.error)
+            console.log("MENSAJE RANDOM ERROR")
+            console.log(res)
+            //  console.log(res.error)
+            // ToastAndroid.show('Usuario y/o contraseña incorrecto',
             // ToastAndroid.TOP,25,
             // 50)
-            }else{
+        }
+        else{
+                console.log("MENSAJE RANDOM")
+                console.log(res)
                 props.navigation.navigate('Home')
-                ToastAndroid.show('Bienvenido',
-                ToastAndroid.TOP,25,
-            50)
+            //     ToastAndroid.show('Bienvenido',
+            //     ToastAndroid.TOP,25,
+            // 50)
             }
 
     }

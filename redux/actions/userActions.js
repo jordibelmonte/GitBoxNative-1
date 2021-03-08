@@ -1,12 +1,11 @@
 import axios from 'axios'
 
 const userActions = {
-    crearCuenta: (formNuevoUsuario) => {
+    crearCuenta: (nuevoUsario) => {
+
         return async (dispatch,getstate) => {
             try{
-              const data = await axios.post("https://backend-giftbox.herokuapp.com/api/usuarios",formNuevoUsuario,{
-                headers: {"Content-Type": "multipart: form-data"}
-              }); 
+              const data = await axios.post("https://backend-giftbox.herokuapp.com/api/usuarios",nuevoUsario); 
               console.log(data.data.success)
               
               if (data.data.success){

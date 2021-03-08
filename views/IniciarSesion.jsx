@@ -20,7 +20,9 @@ const IniciarSesion =(props)=>{
             50)
             return false   
           }
+
         const res = await props.iniciarSesion(nuevoUsario)
+
         if(res && !res.success){
             ToastAndroid.show('Usuario y/o contraseña incorrecto',
             ToastAndroid.TOP,25,
