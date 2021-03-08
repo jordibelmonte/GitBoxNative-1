@@ -5,6 +5,7 @@ import LosMasRegalados from './LosMasRegalados'
 import Prueba from './Prueba'
 
 const Home =(props)=>{
+    console.log(props)
     return (
         <ScrollView>
             <View style={{flex:1}}>

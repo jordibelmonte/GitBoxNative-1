@@ -27,7 +27,7 @@ export default class App extends React.Component {
          
                 }}>
             {/* <Text style={{fontSize: 30}}>{item.img}</Text> */}
-            <ImageBackground source={{uri:item.img}} resizeMode='cover' style={{width:194.5, height:200,justifyContent:'flex-end'}}>
+            <ImageBackground source={{uri:item.img}}  resizeMode='cover' style={{width:194.5, height:200,justifyContent:'flex-end'}}>
             </ImageBackground>
             <Text style={{color:item.color,fontSize:15,paddingBottom:5,paddingLeft:20}}>{item.text}</Text>
             <View style={{flexDirection:'row',paddingLeft:10}}>{[...Array(5)].map((m,i)=>{
@@ -54,6 +54,7 @@ export default class App extends React.Component {
                   itemWidth={200}
                   renderItem={this._renderItem}
                   loop={true}
+                  keyExtractor={(item) => item.id}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
             </View>
           </SafeAreaView>

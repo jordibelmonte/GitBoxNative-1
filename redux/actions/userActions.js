@@ -88,6 +88,12 @@ const userActions = {
             return respuesta.data 
         }
         }
+    },
+    loginGoogle:(name)=>{
+        return async(dispatch,getState)=>{
+            dispatch({type:'INICIAR_GOOGLE',payload:name})
+        }
+        
     }
 }
 export default userActions;

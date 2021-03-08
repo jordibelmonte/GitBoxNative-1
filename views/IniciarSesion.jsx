@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import {TouchableOpacity,Alert,ToastAndroid, Image, ImageBackground, StyleSheet, Text, TextInput,View } from 'react-native';
 import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
+import * as Google from 'expo-google-app-auth'
 
 
 const IniciarSesion =(props)=>{
+    console.log(props)
     const [error, setError] = useState({})
     const [nuevoUsario, setNuevoUsario] = useState({
         cuenta:'',
-        password:''
+        password:'',
+        name:'',
+        photoUrl:''
     })
     const leerInput = (name, value)=>{
         setNuevoUsario({...nuevoUsario, [name]:value})
@@ -30,8 +34,34 @@ const IniciarSesion =(props)=>{
                 ToastAndroid.show('Bienvenido',
                 ToastAndroid.TOP,25,
             50)
-            }
+            }      
     }
+    async function signInWithGoogleAsync() {
+        try {
+            const result = await Google.logInAsync({
+              androidClientId: "799511075036-b8oechliernvv2t2gj2ng5qbbmjhn3vi.apps.googleusercontent.com",
+              scopes: ['profile', 'email'],
+            });
+            if(result.type ==='success'){
+                var name = result.user
+                props.navigation.navigate('Home')
+            }
+            if (result.type === 'success') {
+              return result.accessToken;
+            } else {
+              console.log('cancelled')
+            }
+          } catch (e) {
+            console.log('error',e)
+          }
+          console.log(name)
+        const googlee = await props.iniciarGoogle(name)
+        console.log('ESTO ES GOOGLE')
+        console.log(googlee)
+        
+    }
+
+
     return(
         <ImageBackground source={{uri:'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg'}} resizeMode='cover' style={{width:'100%', height:'100%', justifyContent:'center'}}>
             <View style={{paddingLeft:30}}>
@@ -50,6 +80,11 @@ const IniciarSesion =(props)=>{
                 <TouchableOpacity onPress={validar}>
                     <View style={styles.boton} >
                         <Text Text>Inciar sesion</Text>
+                    </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={signInWithGoogleAsync}>
+                    <View style={styles.boton} >
+                        <Text Text>Inciar sesion con Google</Text>
                     </View>
               </TouchableOpacity>
         </ImageBackground>
@@ -83,7 +118,8 @@ const styles = StyleSheet.create({
       }
   }
   const mapDipachToProps ={
-    iniciarSesion:userActions.iniciarSesion
+    iniciarSesion:userActions.iniciarSesion,
+    iniciarGoogle:userActions.loginGoogle
   }
  
 

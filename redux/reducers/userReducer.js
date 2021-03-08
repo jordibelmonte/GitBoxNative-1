@@ -14,7 +14,12 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loggedUser:null
-            }             
+            }
+        case 'INICIAR_GOOGLE':
+            return{
+                ...state,
+                loggedUser:action.payload
+            }
         default:
         return state
     }
