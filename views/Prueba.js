@@ -25,7 +25,7 @@ import { connect } from 'react-redux';
               padding: 0,
                 }}>
               <ImageBackground source={{uri:item.imagen}} resizeMode='cover' style={{width:200, height:350,justifyContent:'flex-end'}}>
-                  <Text style={{height:'100%',width:'100%',color:item.color,fontSize:23,fontWeight:'bold',paddingBottom:30,paddingLeft:20}} onPress={()=>props.navigation.navigate('registro')}>{item.nombre}</Text>
+                  <Text style={{color:item.color,fontSize:23,fontWeight:'bold',paddingBottom:30,paddingLeft:20}} onPress={()=>props.navigation.navigate('registro')}>{item.nombre}</Text>
               </ImageBackground>
           </View>
 

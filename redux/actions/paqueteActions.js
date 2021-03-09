@@ -43,9 +43,17 @@ const paqueteActions = {
     }
   },
   filtrarPaquetes: (valor) => {
+    console.log('OTRA COSA')
+    console.log('ACTIONNNNNNNNNN')
+    console.log(valor)
     return (dispatch, getState) => {
       try {
+        
+        // return (
+        //   getState().paqueteReducer.todosLosPaquetes.filter(paquete => paquete.nombre.toLowerCase().includes(valor.toLowerCase().trim()) || paquete.cantidadPersonas === valor.trim() || paquete.ubicacion.toLowerCase().includes(valor.toLowerCase().trim()) || paquete.categoria.toLowerCase().includes(valor.toLowerCase().trim()))
+        // )
         dispatch({type: 'FILTRO', payload: valor})
+       
       } catch (error) {
         console.log(error)
       }

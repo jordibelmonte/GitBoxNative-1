@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { Dimensions, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
@@ -9,16 +9,24 @@ import paqueteActions from '../redux/actions/paqueteActions'
 
 const Paquetes = (props) => {
   const paquetes =props.todosLosPaquetes.response
-  console.log(props.route.params.categoria)
+  console.log(props.filtrarPaquetes('Aventura'))
+  // console.log(props.route.params.categoria)
   const [valor, setValor] = useState(false)
   const [categoria, setCategoria] = useState(true)
   const [filterValue,setFilterValue]=useState("");
 
-  // const buscando = e => {
-  //   filtrarPaquetes()
-  //   setValor(true)
+  // const buscando = (value) => {
+  //   setFilterValue(value)
+  //   props.filtrarPaquetes(props.route.params.categoria)
   // }
 
+useEffect(() => {
+  if(props.paquetesFiltrados.lenght ===0){
+    const pepe = props.filtrarPaquetes('Aventura')
+  }
+}, [])
+  
+  // props.filtrarPaquetes(props.route.params.categoria)
 //   const [filterValue,setFilterValue]=useState("");
 // <TextInput placeholder="Categoria" 
 //                     onChangeText={(value)=>setFilterValue(value)} 
@@ -34,11 +42,13 @@ const Paquetes = (props) => {
   //   props.filtrarPaquetes(props.route.params.categoria)
   //   setCategoria(false)
   // }
+  console.log('----------------------------')
+  console.log(props.paquetesFiltrados)
   
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
-        <TextInput type='text' placeholder="HOLA" value={filterValue} onChangeText={(value)=>setFilterValue(value)} ></TextInput>
+        <TextInput type='text' placeholder="HOLA" value={filterValue} ></TextInput>
         {/* <Text>{(location.categoria && !valor) && location.categoria}</Text> */}
         <View style={styles.packagesContainer}>
           {paquetes && paquetes.map(paquete => {

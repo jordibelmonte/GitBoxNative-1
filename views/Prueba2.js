@@ -57,7 +57,6 @@ const Prueba2 = (props) => {
         data={entries}
         renderItem={renderItem}
         hasParallaxImages={true}
-        loop={true}
       />
     </View>
   );
