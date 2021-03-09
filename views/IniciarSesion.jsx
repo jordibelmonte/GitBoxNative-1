@@ -10,8 +10,7 @@ import * as Google from 'expo-google-app-auth'
 //     statusCodes,
 //   } from '@react-native-google-signin/google-signin';
 
-const IniciarSesion = (props) => {
-    console.log(props)
+const IniciarSesion =(props)=>{
     const [error, setError] = useState({})
     const [nuevoUsario, setNuevoUsario] = useState({
         cuenta: '',

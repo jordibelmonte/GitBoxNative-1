@@ -8,7 +8,6 @@ const initialState = {
 const paqueteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'TODOS_PAQUETES':
-      console.log(action.payload)
       return {
         ...state,
         todosLosPaquetes: action.payload
@@ -24,6 +23,8 @@ const paqueteReducer = (state = initialState, action) => {
         paquetePorId: state.todosLosPaquetes.filter(paquete => paquete._id === action.payload)
       }
     case 'FILTRO':
+      console.log('REDUCERRRRRRRRRR')
+      console.log(action.payload)
       return {
         ...state,
         paquetesFiltrados: state.todosLosPaquetes.filter(paquete => paquete.nombre.toLowerCase().includes(action.payload.toLowerCase().trim()) || paquete.cantidadPersonas === action.payload.trim() || paquete.ubicacion.toLowerCase().includes(action.payload.toLowerCase().trim()) || paquete.categoria.toLowerCase().includes(action.payload.toLowerCase().trim()))
