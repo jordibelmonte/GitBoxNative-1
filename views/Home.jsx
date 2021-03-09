@@ -41,9 +41,9 @@ const Home =(props)=>{
                         </TouchableOpacity>
                     </View>           
                 </ImageBackground>
-                <Text style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Categorias</Text>
+                <Text onPress={()=> props.navigation.navigate('paquetes')} style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Categorias</Text>
                 
-                <Prueba />
+                <Prueba/>
                 <Text style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Los Mas regalados</Text>
                 <LosMasRegalados />
             </View>

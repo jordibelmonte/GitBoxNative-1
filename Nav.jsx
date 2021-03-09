@@ -16,12 +16,8 @@ const Nav =()=>{
                 <Stack.Screen name='Home' component ={Home} />
                 <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />
-<<<<<<< HEAD
                 <Stack.Screen name='SignIn' component={Paquete}/>
-=======
-                <Stack.Screen name="SignIn" component={Paquete}/>
                 <Stack.Screen name='paquetes' component={Paquetes} />
->>>>>>> 7afd418e0e1e5501fc32c0b6c2b9f89649d57b10
             </Stack.Navigator>            
         </NavigationContainer>
     )

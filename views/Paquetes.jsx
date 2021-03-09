@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 // import TarjetaPaquete from './TarjetaPaquete'
 
 const Paquetes = (props) => {
-  console.log(props.todosLosPaquetes)
-  const paquetes =props.todosLosPaquetes
+
+  const paquetes = props.todosLosPaquetes
+
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
@@ -36,7 +37,7 @@ const Paquetes = (props) => {
                     <View style={styles.packageDescription}>
                       <Text>{paquete.descripcion}</Text>
                     </View>
-                    <Text style={styles.precio}>{paquete.precio}</Text>
+                    <Text style={styles.precio}>$ {paquete.precio}</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     marginTop: 14
   },
   packageDescription: {
-    justifyContent:'flex-start',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: 40
   },
