@@ -29,7 +29,7 @@ const Prueba2 = (props) => {
     return (
       <View style={styles.item}>
         <ImageBackground
-          backgroundColor='black'
+          backgroundColor='red'
           source={{uri: item.imagen}}
           containerStyle={styles.imageContainer}
           style={styles.image}
