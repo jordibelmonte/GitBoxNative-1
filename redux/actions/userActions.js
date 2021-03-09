@@ -7,8 +7,7 @@ const userActions = {
             try{
               const data = await axios.post("https://backend-giftbox.herokuapp.com/api/usuarios",nuevoUsario); 
               if (data.data.success){
-             
-                dispatch({type:'INICIAR_SESION', payload:data.data})
+                             dispatch({type:'INICIAR_SESION', payload:data.data})
                 return data.data
               } else{
                 return data.data

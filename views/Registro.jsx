@@ -42,6 +42,8 @@ const Registro =(props)=>{
             ToastAndroid.TOP,25,
             50)
             }
+            console.log("USUARIO LOGUEADO")
+            console.log(props.loggedUser)
     }
    
     return(

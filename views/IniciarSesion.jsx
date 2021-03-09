@@ -11,7 +11,7 @@ import * as Google from 'expo-google-app-auth'
 //   } from '@react-native-google-signin/google-signin';
 
 const IniciarSesion = (props) => {
-    console.log(props)
+
     const [error, setError] = useState({})
     const [nuevoUsario, setNuevoUsario] = useState({
         cuenta: '',
@@ -40,31 +40,30 @@ const IniciarSesion = (props) => {
                 ToastAndroid.TOP, 25,
                 50)
         }
-    }
-    async function signInWithGoogleAsync() {
-        try {
-            const result = await Google.logInAsync({
-                androidClientId: "799511075036-b8oechliernvv2t2gj2ng5qbbmjhn3vi.apps.googleusercontent.com",
-                scopes: ['profile', 'email'],
-            });
-            if (result.type === 'success') {
-                var name = result.user
-                props.navigation.navigate('Home')
-            }
-            if (result.type === 'success') {
-                return result.accessToken;
-            } else {
-                setError('cancelled')
-            }
-        } catch (e) {
-            setError('error', e)
-        }
-
-        const googlee = await props.iniciarGoogle(name)
-        console.log('ESTO ES GOOGLE')
-        console.log(googlee)
 
     }
+    // async function signInWithGoogleAsync() {
+    //     try {
+    //         const result = await Google.logInAsync({
+    //             androidClientId: "799511075036-b8oechliernvv2t2gj2ng5qbbmjhn3vi.apps.googleusercontent.com",
+    //             scopes: ['profile', 'email'],
+    //         });
+    //         if (result.type === 'success') {
+    //             var name = result.user
+    //             props.navigation.navigate('Home')
+    //         }
+    //         if (result.type === 'success') {
+    //             return result.accessToken;
+    //         } else {
+    //             setError('cancelled')
+    //         }
+    //     } catch (e) {
+    //         setError('error', e)
+    //     }
+
+    //     const googlee = await props.iniciarGoogle(name)
+
+    //}
 
     return (
         <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: '100%', justifyContent: 'center' }}>
