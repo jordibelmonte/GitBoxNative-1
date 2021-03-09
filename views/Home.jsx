@@ -3,6 +3,7 @@ import { ImageBackground, Text, TouchableOpacity, View,StyleSheet, ScrollView } 
 import Carrusel from './Carrusel'
 import LosMasRegalados from './LosMasRegalados'
 import Prueba from './Prueba'
+import Prueba2 from './Prueba2'
 import Header from './Header'
 import Paquetes from './Paquetes'
 const Home =(props)=>{    
@@ -10,9 +11,6 @@ const Home =(props)=>{
         <ScrollView>
             <View style={{flex:1}}>
                 <Header />
-                <TouchableOpacity onPress={()=>props.navigation.navigate('paquetes')}>
-                    <Text>paqueres</Text>
-                </TouchableOpacity>
                 <ImageBackground source={{uri:'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg'}} resizeMode='cover' style={{width:'100%', height:600,justifyContent:'center'}}>
                     <View style={styles.contenedor}>
                         <Text style={styles.titulo} >Regalá experiencias</Text>
@@ -42,8 +40,8 @@ const Home =(props)=>{
                     </View>           
                 </ImageBackground>
                 <Text style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Categorias</Text>
-                
-                <Prueba />
+                <Prueba2 navigation={props.navigation}/>
+                {/* <Prueba navigation={props.navigation}/> */}
                 <Text style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Los Mas regalados</Text>
                 <LosMasRegalados />
             </View>

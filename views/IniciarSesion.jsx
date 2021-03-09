@@ -6,7 +6,6 @@ import * as Google from 'expo-google-app-auth'
 
 
 const IniciarSesion =(props)=>{
-    console.log(props)
     const [error, setError] = useState({})
     const [nuevoUsario, setNuevoUsario] = useState({
         cuenta:'',

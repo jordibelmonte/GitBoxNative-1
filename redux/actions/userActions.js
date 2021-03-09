@@ -36,7 +36,7 @@ const userActions = {
                     Authorization: `Bearer ${token}`
                 }
             })
-                console.log(respuesta)
+                
                 dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
             } catch(err) {
                 localStorage.clear()

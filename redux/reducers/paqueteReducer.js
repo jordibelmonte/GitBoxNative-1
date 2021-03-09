@@ -8,7 +8,6 @@ const initialState = {
 const paqueteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'TODOS_PAQUETES':
-      console.log(action.payload)
       return {
         ...state,
         todosLosPaquetes: action.payload

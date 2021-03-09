@@ -1,19 +1,44 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Dimensions, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
+import paqueteActions from '../redux/actions/paqueteActions'
 // import { FlatList } from 'react-native-gesture-handler';
 // import Loader from './Loader'
 // import TarjetaPaquete from './TarjetaPaquete'
 
 const Paquetes = (props) => {
-  console.log(props.todosLosPaquetes)
-  const paquetes =props.todosLosPaquetes
+  const paquetes =props.todosLosPaquetes.response
+  console.log(props.route.params.categoria)
+  const [valor, setValor] = useState(false)
+  const [categoria, setCategoria] = useState(true)
+  const [filterValue,setFilterValue]=useState("");
+
+  // const buscando = e => {
+  //   filtrarPaquetes()
+  //   setValor(true)
+  // }
+
+//   const [filterValue,setFilterValue]=useState("");
+// <TextInput placeholder="Categoria" 
+//                     onChangeText={(value)=>setFilterValue(value)} 
+//                      value={filterValue} />
+
+  // if (!props.route.params.categoria && !valor) {
+  //   paquetes = props.todosLosPaquetes
+  // } else if (!categoria || valor) {
+  //   paquetes = props.paquetesFiltrados
+  // }
+
+  // if (categoria && props.route.params.categoria) {
+  //   props.filtrarPaquetes(props.route.params.categoria)
+  //   setCategoria(false)
+  // }
+  
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
-
-        <TextInput type='text' placeholder="HOLA"></TextInput>
+        <TextInput type='text' placeholder="HOLA" value={filterValue} onChangeText={(value)=>setFilterValue(value)} ></TextInput>
         {/* <Text>{(location.categoria && !valor) && location.categoria}</Text> */}
         <View style={styles.packagesContainer}>
           {paquetes && paquetes.map(paquete => {
@@ -62,6 +87,7 @@ const styles = StyleSheet.create({
     // marginRight: '10%'
   },
   packagesContainer: {
+    width:'100%',
     flexWrap: 'wrap',
     alignSelf: 'center',
     justifyContent: 'center',
@@ -150,7 +176,12 @@ const styles = StyleSheet.create({
 });
 const mapStateToProps = state => {
   return {
-    todosLosPaquetes: state.paqueteReducer.todosLosPaquetes
+    todosLosPaquetes: state.paqueteReducer.todosLosPaquetes,
+    paquetesFiltrados: state.paqueteReducer.paquetesFiltrados
   }
 }
-export default connect(mapStateToProps)(Paquetes)
+
+const mapDispatchToProps = {
+  filtrarPaquetes: paqueteActions.filtrarPaquetes
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Paquetes)
