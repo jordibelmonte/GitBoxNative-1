@@ -7,6 +7,7 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Paquete from './Paquete'
 import Paquetes from './views/Paquetes'
+import Carrito from './views/Carrito'
 
 const Stack = createStackNavigator()
 const Nav =()=>{
@@ -16,8 +17,9 @@ const Nav =()=>{
                 <Stack.Screen name='Home' component ={Home} />
                 <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />
-                <Stack.Screen name="SignIn" component={Paquete}/>
+                <Stack.Screen name='paquete' component={Paquete}/>
                 <Stack.Screen name='paquetes' component={Paquetes} />
+                <Stack.Screen name='carrito' component={Carrito} />
             </Stack.Navigator>            
         </NavigationContainer>
     )

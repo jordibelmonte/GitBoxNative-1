@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Dimensions, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
@@ -8,29 +8,35 @@ import paqueteActions from '../redux/actions/paqueteActions'
 // import TarjetaPaquete from './TarjetaPaquete'
 
 const Paquetes = (props) => {
-  const paquetes =props.todosLosPaquetes.response
-  console.log(props.filtrarPaquetes('Aventura'))
+  /* const paquetes = props.todosLosPaquetes.response */
+
+  
   // console.log(props.route.params.categoria)
+
   const [valor, setValor] = useState(false)
   const [categoria, setCategoria] = useState(true)
-  const [filterValue,setFilterValue]=useState("");
+  const [filterValue, setFilterValue] = useState("");
+  const [nombreCategoria, setNombreCategoria] = useState(props.route.params.categoria)
+  console.log(nombreCategoria)
 
   // const buscando = (value) => {
   //   setFilterValue(value)
   //   props.filtrarPaquetes(props.route.params.categoria)
   // }
 
-useEffect(() => {
-  if(props.paquetesFiltrados.lenght ===0){
-    const pepe = props.filtrarPaquetes('Aventura')
-  }
-}, [])
-  
+  useEffect(() => {
+    /*  if(props.paquetesFiltrados.lenght ===0){
+       const pepe = props.filtrarPaquetes('Aventura')
+       
+     } */
+    props.filtrarPaquetes(filterValue)
+  }, [filterValue])
+
   // props.filtrarPaquetes(props.route.params.categoria)
-//   const [filterValue,setFilterValue]=useState("");
-// <TextInput placeholder="Categoria" 
-//                     onChangeText={(value)=>setFilterValue(value)} 
-//                      value={filterValue} />
+  //   const [filterValue,setFilterValue]=useState("");
+  // <TextInput placeholder="Categoria" 
+  //                     onChangeText={(value)=>setFilterValue(value)} 
+  //                      value={filterValue} />
 
   // if (!props.route.params.categoria && !valor) {
   //   paquetes = props.todosLosPaquetes
@@ -42,19 +48,18 @@ useEffect(() => {
   //   props.filtrarPaquetes(props.route.params.categoria)
   //   setCategoria(false)
   // }
-  console.log('----------------------------')
-  console.log(props.paquetesFiltrados)
-  
+
+
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
-        <TextInput type='text' placeholder="HOLA" value={filterValue} ></TextInput>
+        <TextInput type='text' placeholder="HOLA" value={filterValue} onChangeText={(value) => setFilterValue(value)}></TextInput>
         {/* <Text>{(location.categoria && !valor) && location.categoria}</Text> */}
         <View style={styles.packagesContainer}>
-          {paquetes && paquetes.map(paquete => {
+          {props.todosLosPaquetes && props.todosLosPaquetes.filter((paquete) => paquete.categoria === nombreCategoria).map(paquete => {
             return (
               <TouchableOpacity style={styles.package} key={paquete._id}>
-                <ImageBackground style={styles.packageImage} imageStyle={{ borderRadius: 5 }} source={{ uri: paquete.imagen }}>
+                <ImageBackground style={styles.packageImage} resizeMode={'cover'}  imageStyle={{ borderRadius: 5 }} source={{ uri: paquete.imagen }}>
                   <View style={styles.packageCategoryContainer}>
                     <View style={styles.categoryContainer}>
                       <Text style={styles.category}>{paquete.categoria}</Text>
@@ -71,7 +76,10 @@ useEffect(() => {
                     <View style={styles.packageDescription}>
                       <Text>{paquete.descripcion}</Text>
                     </View>
-                    <Text style={styles.precio}>{paquete.precio}</Text>
+                    <Text style={styles.precio}>$ {paquete.precio}</Text>
+                  </View>
+                  <View>
+                    <Text style={{color:'red',fontSize:30}} onPress={()=>props.navigation.navigate('paquete',{paqueteId:paquete._id})}>Ver</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -97,29 +105,23 @@ const styles = StyleSheet.create({
     // marginRight: '10%'
   },
   packagesContainer: {
-    width:'100%',
-    flexWrap: 'wrap',
-    alignSelf: 'center',
-    justifyContent: 'center',
+    width: '100%',
   },
   package: {
-    position: 'relative',
     alignItems: 'center',
-    width: 265,
-    height: 375,
+    width: '100%',
+    height: 450,
     marginTop: 20,
     marginBottom: 20,
-
   },
   packageImage: {
     justifyContent: 'flex-end',
-    resizeMode: 'cover',
-    position: 'absolute',
-    zIndex: 10,
-    elevation: 5,
-    // boxShadow
-    width: 244,
-    height: 263,
+    width:'100%',
+    height:300,
+    borderWidth:3,
+    borderColor:'green'
+    
+
   },
   packageCategoryContainer: {
     flexDirection: 'row',
@@ -127,6 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     width: 244,
     height: 132,
+
   },
   categoryContainer: {
     justifyContent: 'center',
@@ -139,6 +142,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     borderRadius: 5,
     backgroundColor: 'white',
+
   },
   category: {
     color: 'rgb(255, 108, 95)',
@@ -150,32 +154,36 @@ const styles = StyleSheet.create({
     height: 50,
     marginRight: 20,
     marginBottom: 25,
-    backgroundColor: 'blue'
+    
   },
   packageDataContainer: {
-    position: 'absolute',
     bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    width: 265,
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    width: '100%',
     height: 132,
     backgroundColor: 'white',
-    // boxShadow
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.8,
     elevation: 5,
+    borderWidth:3,
+    borderColor:'red'
+
   },
   packageData: {
     justifyContent: 'space-between',
+    paddingLeft:20,
     width: 252,
     height: 113,
+    borderWidth:3,
+    borderColor:'blue'
   },
   starsAndAssessment: {
     marginTop: 14
   },
   packageDescription: {
-    justifyContent:'flex-start',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: 40
   },
@@ -194,4 +202,4 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   filtrarPaquetes: paqueteActions.filtrarPaquetes
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Paquetes)
+export default connect(mapStateToProps, mapDispatchToProps)(Paquetes)

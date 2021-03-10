@@ -20,10 +20,9 @@ const paqueteReducer = (state = initialState, action) => {
     case 'PAQUETE_ID':
       return {
         ...state,
-        paquetePorId: state.todosLosPaquetes.filter(paquete => paquete._id === action.payload)
+        paquetePorId: state.todosLosPaquetes.find(paquete => paquete._id === action.payload)
       }
     case 'FILTRO':
-      console.log('REDUCERRRRRRRRRR')
       console.log(action.payload)
       return {
         ...state,

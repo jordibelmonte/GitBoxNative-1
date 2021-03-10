@@ -54,7 +54,7 @@ export default class App extends React.Component {
                   itemWidth={200}
                   renderItem={this._renderItem}
                   loop={true}
-                  keyExtractor={(item) => item.id}
+                  keyExtractor={(item) => item.img}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
             </View>
           </SafeAreaView>

@@ -20,24 +20,23 @@ const Prueba2 = (props) => {
   const goForward = () => {
     carouselRef.current.snapToNext();
   };
-
+  
   useEffect(() => {
     setEntries(props.todasLasCategorias);
-  }, []);
-
+  }, [props.todasLasCategorias]);
   const renderItem = ({item, index}, parallaxProps) => {
+    console.log(item)
     return (
       <View style={styles.item}>
         <ImageBackground
-          backgroundColor='red'
           source={{uri: item.imagen}}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0.4}
           {...parallaxProps}
-          
+          keyExtractor={index}
         >
-        <Text style={{height:'100%',width:'100%',color:item.color,fontSize:24,fontWeight:'bold',paddingLeft:10,paddingTop:20}} numberOfLines={2} onPress={()=>props.navigation.navigate('paquetes',{categoria:item.nombre})} >
+        <Text style={{backgroundColor:'rgba(0 ,0 ,0, 0.4)', height:'100%',width:'100%',color:item.color,fontSize:24,fontWeight:'bold',paddingLeft:10,paddingTop:20}} numberOfLines={2} onPress={()=>props.navigation.navigate('paquetes',{navigation:props.navigation,categoria:item.nombre})} >
           {item.nombre} 
         </Text>
         </ImageBackground>
@@ -57,6 +56,8 @@ const Prueba2 = (props) => {
         data={entries}
         renderItem={renderItem}
         hasParallaxImages={true}
+        loop={true}
+        keyExtractor={item => item._id}
       />
     </View>
   );

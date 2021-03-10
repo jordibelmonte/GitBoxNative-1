@@ -43,7 +43,7 @@ const Home =(props)=>{
                 <Prueba2 navigation={props.navigation}/>
                 {/* <Prueba navigation={props.navigation}/> */}
                 <Text style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Los Mas regalados</Text>
-                <LosMasRegalados />
+                {/* <LosMasRegalados /> */}
             </View>
         </ScrollView>
     )
