@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import Home from './views/Home';
+import Paquetes from './views/Paquetes';
 import Registro from './views/Registro'
 import IniciarSesion from './views/IniciarSesion'
 import {NavigationContainer} from '@react-navigation/native'
@@ -12,6 +13,7 @@ const Nav =()=>{
     return(
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name='Paquetes' component ={Paquetes} />
                 <Stack.Screen name='Home' component ={Home} />
                 <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />

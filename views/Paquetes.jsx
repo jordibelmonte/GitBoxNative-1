@@ -12,8 +12,9 @@ const Paquetes = () => {
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
-
-        <TextInput type='text' placeholder="HOLA"></TextInput>
+        <View style={styles.searchContainer}>
+          <TextInput style={styles.search} type='text' placeholder="HOLA"></TextInput>
+        </View>
         {/* <Text>{(location.categoria && !valor) && location.categoria}</Text> */}
         <View style={styles.packagesContainer}>
           {paquetes.map(paquete => {
@@ -60,6 +61,16 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     // marginLeft: '10%',
     // marginRight: '10%'
+  },
+  search: {
+    width: 280,
+    height: 40,
+    fontSize: 18,
+    marginTop: 10,
+    alignSelf: 'center',
+    textAlign: 'center',
+    backgroundColor: 'yellow',
+    borderRadius: 10
   },
   packagesContainer: {
     flexWrap: 'wrap',
@@ -139,8 +150,8 @@ const styles = StyleSheet.create({
     marginTop: 14
   },
   packageDescription: {
-    justifyContent:'flex-start',
-    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     height: 40
   },
   precio: {

@@ -49,13 +49,14 @@ const MyCarousel = props => {
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (
-      <View style={styles.item}>
+      <View style={styles.item} onPress={() => props.navigation.navigate('Paquetes')} key={item._id}>
         <ParallaxImage
           source={{uri: item.img}}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0.4}
           {...parallaxProps}
+          
         />
         <Text style={styles.title} numberOfLines={2}>
           {item.text}
