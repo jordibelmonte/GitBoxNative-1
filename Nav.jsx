@@ -13,7 +13,12 @@ const Stack = createStackNavigator()
 const Nav =()=>{
     return(
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{
+                headerStyle:{
+                    height:80,
+                    backgroundColor:'red'
+                }
+            }}>
                 <Stack.Screen name='Home' component ={Home} />
                 <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />

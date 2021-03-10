@@ -17,7 +17,7 @@ const Paquetes = (props) => {
   const [categoria, setCategoria] = useState(true)
   const [filterValue, setFilterValue] = useState("");
   const [nombreCategoria, setNombreCategoria] = useState(props.route.params.categoria)
-  console.log(nombreCategoria)
+
 
   // const buscando = (value) => {
   //   setFilterValue(value)
@@ -53,7 +53,7 @@ const Paquetes = (props) => {
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
-        <TextInput type='text' placeholder="HOLA" value={filterValue} onChangeText={(value) => setFilterValue(value)}></TextInput>
+        {/* <TextInput type='text' placeholder="HOLA" value={filterValue} onChangeText={(value) => setFilterValue(value)}></TextInput> */}
         {/* <Text>{(location.categoria && !valor) && location.categoria}</Text> */}
         <View style={styles.packagesContainer}>
           {props.todosLosPaquetes && props.todosLosPaquetes.filter((paquete) => paquete.categoria === nombreCategoria).map(paquete => {
@@ -118,10 +118,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     width:'100%',
     height:300,
-    borderWidth:3,
-    borderColor:'green'
-    
-
   },
   packageCategoryContainer: {
     flexDirection: 'row',
@@ -167,8 +163,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.8,
     elevation: 5,
-    borderWidth:3,
-    borderColor:'red'
 
   },
   packageData: {
@@ -176,8 +170,6 @@ const styles = StyleSheet.create({
     paddingLeft:20,
     width: 252,
     height: 113,
-    borderWidth:3,
-    borderColor:'blue'
   },
   starsAndAssessment: {
     marginTop: 14

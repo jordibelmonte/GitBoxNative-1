@@ -40,27 +40,27 @@ const IniciarSesion =(props)=>{
                 50)
         }
     }
-    async function signInWithGoogleAsync() {
-        try {
-            const result = await Google.logInAsync({
-                androidClientId: "799511075036-b8oechliernvv2t2gj2ng5qbbmjhn3vi.apps.googleusercontent.com",
-                scopes: ['profile', 'email'],
-            });
-            if (result.type === 'success') {
-                var name = result.user
-                props.navigation.navigate('Home')
-            }
-            if (result.type === 'success') {
-                return result.accessToken;
-            } else {
-                console.log('cancelled')
-            }
-        } catch (e) {
-            console.log('error', e)
-        }
-        const googlee = await props.iniciarGoogle(name)
+    // async function signInWithGoogleAsync() {
+    //     try {
+    //         const result = await Google.logInAsync({
+    //             androidClientId: "799511075036-b8oechliernvv2t2gj2ng5qbbmjhn3vi.apps.googleusercontent.com",
+    //             scopes: ['profile', 'email'],
+    //         });
+    //         if (result.type === 'success') {
+    //             var name = result.user
+    //             props.navigation.navigate('Home')
+    //         }
+    //         if (result.type === 'success') {
+    //             return result.accessToken;
+    //         } else {
+    //             console.log('cancelled')
+    //         }
+    //     } catch (e) {
+    //         console.log('error', e)
+    //     }
+    //     const googlee = await props.iniciarGoogle(name)
 
-    }
+    // }
     return (
         <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: '100%', justifyContent: 'center' }}>
             <View style={{ paddingLeft: 30 }}>
@@ -81,17 +81,17 @@ const IniciarSesion =(props)=>{
                     <Text Text>Inciar sesion</Text>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={signInWithGoogleAsync}>
+            {/* <TouchableOpacity onPress={signInWithGoogleAsync}>
                 <View style={styles.boton} >
                     <Text Text>Inciar sesion con Google</Text>
                 </View>
-            </TouchableOpacity>
-            <GoogleSigninButton
+            </TouchableOpacity> */}
+            {/* <GoogleSigninButton
                 style={{ width: 192, height: 48 }}
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Dark}
                 onPress={this._signIn}
-                disabled={this.state.isSigninInProgress} />
+                disabled={this.state.isSigninInProgress} /> */}
         </ImageBackground >
     )
     

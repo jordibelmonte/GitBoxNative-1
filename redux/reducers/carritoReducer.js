@@ -53,12 +53,12 @@ const carritoReducer=(state=initialState,action)=>{
                 carrito: carritoAux2,
                 total: nuevoTotal1
             }
-        case("CARRITO_LS"):
-            return{
-                ...state,
-                carrito:action.payload.carritoLS,
-                total: action.payload.total
-            }
+        // case("CARRITO_LS"):
+        //     return{
+        //         ...state,
+        //         carrito:action.payload.carritoLS,
+        //         total: action.payload.total
+        //     }
         default:
             return state;
     }

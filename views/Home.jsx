@@ -48,6 +48,7 @@ const Home =(props)=>{
         </ScrollView>
     )
 }
+
 const styles = StyleSheet.create({
     contenedor:{
         width:'80%',

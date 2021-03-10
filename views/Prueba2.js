@@ -25,7 +25,6 @@ const Prueba2 = (props) => {
     setEntries(props.todasLasCategorias);
   }, [props.todasLasCategorias]);
   const renderItem = ({item, index}, parallaxProps) => {
-    console.log(item)
     return (
       <View style={styles.item}>
         <ImageBackground
@@ -34,7 +33,7 @@ const Prueba2 = (props) => {
           style={styles.image}
           parallaxFactor={0.4}
           {...parallaxProps}
-          keyExtractor={index}
+          // keyExtractor={index}
         >
         <Text style={{backgroundColor:'rgba(0 ,0 ,0, 0.4)', height:'100%',width:'100%',color:item.color,fontSize:24,fontWeight:'bold',paddingLeft:10,paddingTop:20}} numberOfLines={2} onPress={()=>props.navigation.navigate('paquetes',{navigation:props.navigation,categoria:item.nombre})} >
           {item.nombre} 
@@ -43,6 +42,9 @@ const Prueba2 = (props) => {
       </View>
     );
   };
+  const generateKey = () => {
+    return `${ new Date().getTime() }`;
+  }
   
   return (
     <View style={styles.container}>
@@ -56,8 +58,8 @@ const Prueba2 = (props) => {
         data={entries}
         renderItem={renderItem}
         hasParallaxImages={true}
+        key={({ _id},index) => index}
         loop={true}
-        keyExtractor={item => item._id}
       />
     </View>
   );

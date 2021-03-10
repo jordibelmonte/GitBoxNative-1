@@ -10,7 +10,7 @@ const Header =(props)=>{
         props.obtenerTodosLosPaquetes()
         props.obtenerTodasLasCategorias()
     }, [])
-    return <Text>header</Text>
+    return <Text style={{display:'none'}}>header</Text>
 }
 
 const mapStateToProps = state => {

@@ -9,7 +9,6 @@ import Carousel from 'react-native-snap-carousel';
 
 export default class App extends React.Component {
 
- 
     constructor(props){
         super(props);
         this.state = {
@@ -41,7 +40,9 @@ export default class App extends React.Component {
 
         )
     }
-
+    generateKey = () => {
+      return `${ new Date().getTime() }`;
+    }
     render() {
         return (
           <SafeAreaView style={{flex: 1, }}>
@@ -54,7 +55,7 @@ export default class App extends React.Component {
                   itemWidth={200}
                   renderItem={this._renderItem}
                   loop={true}
-                  keyExtractor={(item) => item.img}
+                  key={({ _id},index) => `a${index}`}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
             </View>
           </SafeAreaView>
