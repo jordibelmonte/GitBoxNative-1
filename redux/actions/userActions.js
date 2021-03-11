@@ -29,19 +29,25 @@ const userActions = {
             dispatch({type: 'CERRAR_SESION'})
         }
     },
-    logFromLS: (token) => {
+    logFromLS: () => {
         return async (dispatch, getState) => {
-            try {
-                const respuesta = await axios.post('https://backend-giftbox.herokuapp.com/api/usuarios/ls', {token}, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            console.log("entre al actions1")
+            const token = await AsyncStorage.getItem("token")
+            
+            if(token!==null){
+                try {
+                    console.log("entre al actions2")
+                    const respuesta = await axios.post('https://backend-giftbox.herokuapp.com/api/usuarios/ls', {token}, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                    dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
+                } catch(err) {
+                    AsyncStorage.clear()
                 }
-            })
-                
-                dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
-            } catch(err) {
-                AsyncStorage.clear()
             }
+
         }
     },
     

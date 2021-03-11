@@ -37,7 +37,13 @@ const Home =(props)=>{
                                 <Text style={{color:'red'}}>Iniciar Sesion</Text>
                             </View>
                         </TouchableOpacity>
-                    </View>           
+                        
+                    </View>
+                    <TouchableOpacity onPress={()=>props.navigation.navigate('carrito')}>
+                        <View style={styles.boton2}>
+                            <Text style={{color:'red'}}>CARRITO</Text>
+                        </View>
+                    </TouchableOpacity>          
                 </ImageBackground>
                 <Text style={{color:'#464646',fontSize:40,paddingLeft:'5%',paddingVertical:'5%',fontWeight:'bold'}}>Categorias</Text>
                 <Prueba2 navigation={props.navigation}/>

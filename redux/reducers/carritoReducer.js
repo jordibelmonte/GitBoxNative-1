@@ -47,7 +47,6 @@ const carritoReducer=(state=initialState,action)=>{
                     nuevoTotal1-=paquete.precio
                 }
                 if(paquete.cantidad!==0){return paquete;}
-                
             })
             return{
                 ...state,
@@ -55,11 +54,14 @@ const carritoReducer=(state=initialState,action)=>{
                 total: nuevoTotal1
             }
         case("CARRITO_LS"):
-        // console.log(action.payload.carritoLS)
+        // console.log("REDUCERRRRRRRRRRRRRRRRRRRRRRRRRRR")
+        const aux3=JSON.parse(action.payload.carritoLS) 
         // console.log(action.payload.total)
+        // console.log(aux3[0])
+        
             return{
                 ...state,
-                carrito: action.payload.carritoLS,
+                carrito: [...aux3],
                 total: action.payload.total
             }
         default:

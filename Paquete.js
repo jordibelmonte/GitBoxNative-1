@@ -17,7 +17,7 @@ const  Paquete =(props)=> {
   const agregarCarrito =()=>{
     console.log("Press del agregar al carrito")
     props.agregarAlCarrito(props.paqueteId)
-    props.navigation.navigate('carrito')
+    props.navigation.navigate("carrito")
     
   }
   return (
