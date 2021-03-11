@@ -9,9 +9,9 @@ const setLS = async (carrito,total) => {
   }
 }
 const carritoActions = {
-  agregarAlCarrito: ({nombre,_id,cantidad,precio,descripcion,imagen}) => {
+  agregarAlCarrito: ({nombre,_id,cantidad,precio,descripcion,imagen,cantidadPersonas}) => {
     return async (dispatch, getState) => {
-      dispatch({type:"AGREGAR_AL_CARRITO", payload: {nombre,_id,cantidad,precio,descripcion,imagen}})
+      dispatch({type:"AGREGAR_AL_CARRITO", payload: {nombre,_id,cantidad,precio,descripcion,imagen,cantidadPersonas}})
       AsyncStorage.clear()
       setLS(getState().carritoReducer.carrito,getState().carritoReducer.total)
   
@@ -21,11 +21,12 @@ const carritoActions = {
     return async (dispatch, getState) => {
       setLS()
       dispatch({type:"ELIMINAR_DEL_CARRITO", payload: {_id,precio,cantidad}})
-      // AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito));
-      // AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
+      AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito));
+      AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
     }
   },
   actualizarCarrito: ({_id},numero)=>{
+    console.log(numero)
     return async (dispatch, getState) => {
       AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito))
       AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));

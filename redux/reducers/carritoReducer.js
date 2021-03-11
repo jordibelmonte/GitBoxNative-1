@@ -7,7 +7,7 @@ const carritoReducer=(state=initialState,action)=>{
         case ("AGREGAR_AL_CARRITO"):
             let paqueteEnCarrito=false
             if(state.carrito){
-                const carritoAux= state.carrito.map(paquete=>{
+                var carritoAux= state.carrito.map(paquete=>{
                     if(paquete._id===action.payload._id){
                         paquete.cantidad+=1;
                         paqueteEnCarrito=true;
@@ -38,16 +38,18 @@ const carritoReducer=(state=initialState,action)=>{
             }
         case ("ACTUALIZAR_CARRITO"):    
             var nuevoTotal1=state.total;
+            console.log(nuevoTotal1)
             const carritoAux2=state.carrito.filter(paquete=>{
-                if(paquete._id===action.payload._id && action.payload.numero==="1"){
+                if(paquete._id===action.payload._id && action.payload.numero===1){
                     paquete.cantidad+=1
                     nuevoTotal1+=paquete.precio
-                }else if(paquete._id===action.payload._id && action.payload.numero==="-1"){
+                }else if(paquete._id===action.payload._id && action.payload.numero===-1){
                     paquete.cantidad-=1
                     nuevoTotal1-=paquete.precio
                 }
                 if(paquete.cantidad!==0){return paquete;}
             })
+            console.log(state.carrito)
             return{
                 ...state,
                 carrito: carritoAux2,

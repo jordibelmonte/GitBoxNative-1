@@ -26,7 +26,7 @@ const Home =(props)=>{
                             </View>
                         </TouchableOpacity>
                     </View> 
-                    <View style={{flexDirection:'row',height:200,alignItems:'flex-end'}}>
+                    <View style={{flexDirection:'row',height:200,justifyContent:'center',alignItems:'flex-end'}}>
                         <TouchableOpacity onPress={()=>props.navigation.navigate('registro')}>
                             <View style={styles.boton2}> 
                                 <Text style={{color:'red'}}>Registrar</Text>
