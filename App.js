@@ -11,7 +11,7 @@ const App = () => {
   const myStore = createStore(mainReducer, applyMiddleware(thunk))
   return (
     <Provider store={myStore}>
-      <Nav />
+      <Nav/>
     </Provider>
   )
 }

@@ -1,0 +1,3 @@
+6c:cb:ae:96:ff:6d:b4:e5:54:b9:9c:0a:ac:f9:5b:a1:8b:af:55:1c
+
+keytool -keystore path-to-debug-or-production-keystore -list -v

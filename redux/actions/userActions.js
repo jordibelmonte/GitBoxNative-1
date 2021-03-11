@@ -1,13 +1,14 @@
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const userActions = {
-    crearCuenta: (formNuevoUsuario) => {
+    crearCuenta: (nuevoUsario) => {
+
         return async (dispatch,getstate) => {
             try{
-              const data = await axios.post("https://backend-giftbox.herokuapp.com/api/usuarios",formNuevoUsuario,{
-                headers: {"Content-Type": "multipart: form-data"}
-              }); 
+              const data = await axios.post("https://backend-giftbox.herokuapp.com/api/usuarios",nuevoUsario); 
               console.log(data.data.success)
+              
               if (data.data.success){
                 console.log(data.data.response)
                 console.log("ACTIONS")                
@@ -28,19 +29,25 @@ const userActions = {
             dispatch({type: 'CERRAR_SESION'})
         }
     },
-    logFromLS: (token) => {
+    logFromLS: () => {
         return async (dispatch, getState) => {
-            try {
-                const respuesta = await axios.post('https://backend-giftbox.herokuapp.com/api/usuarios/ls', {token}, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            console.log("entre al actions1")
+            const token = await AsyncStorage.getItem("token")
+            
+            if(token!==null){
+                try {
+                    console.log("entre al actions2")
+                    const respuesta = await axios.post('https://backend-giftbox.herokuapp.com/api/usuarios/ls', {token}, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                    dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
+                } catch(err) {
+                    AsyncStorage.clear()
                 }
-            })
-                console.log(respuesta)
-                dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
-            } catch(err) {
-                localStorage.clear()
             }
+
         }
     },
     
@@ -88,6 +95,12 @@ const userActions = {
             return respuesta.data 
         }
         }
+    },
+    loginGoogle:(name)=>{
+        return async(dispatch,getState)=>{
+            dispatch({type:'INICIAR_GOOGLE',payload:name})
+        }
+        
     }
 }
 export default userActions;
