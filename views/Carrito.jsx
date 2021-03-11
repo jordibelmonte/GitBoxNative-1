@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import React, { useEffect } from 'react'
-import { Button, Text, View } from "react-native";
+import { Button, ImageBackground, Text, View } from "react-native";
 import Loader from "./Loader";
 import { useState } from "react";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Carrito=({carrito})=>{
@@ -17,14 +17,40 @@ const Carrito=({carrito})=>{
     console.log("0000000000000000000000000000000")
     return(
         <>
-        <View>
+        <ScrollView>
+        <View style={{flex:1,paddingBottom:50}}>
+        
             <View >
-                <Text> Tu carrito</Text>
+                <Text style={{fontSize:40, fontWeight:'bold',paddingVertical:20}}> Tu carrito</Text>
             </View>
-            <View style={{height:500,width:600}}>
+            <View style={{height:'100%',width:'100%',alignItems:'center'}}>
                 <View >
+                
                 {carrito1&& carrito1.map((paquete) => {
-                    return (<View><Text>{paquete.nombre}</Text></View>)
+                    return (<View>
+                        
+                        <View style={{flexDirection:'row',alignItems:'center'}}>
+                            <ImageBackground style={{width:100,height:100,marginBottom:35,marginLeft:20}} source={{uri:paquete.imagen}} resizeMode='cover'>
+                            </ImageBackground>
+                            <View>
+                                <Text style={{fontSize:22,marginLeft:20}}>${paquete.precio}</Text>
+                            </View>
+                            <View>
+                                <Text style={{fontSize:22,marginLeft:100}}>{paquete.cantidad}+</Text>
+                            </View>
+                        </View>
+                    </View>)
+                    
+
+                    })}
+                    {carrito1&& carrito1.map((paquete) => {
+                    return (
+                            <View style={{flexDirection:'row',justifyContent:'space-between',width:'70%'}}>
+                                <Text style={{fontSize:22,marginLeft:20}}>{paquete.nombre}</Text>
+                                <Text style={{fontSize:22,marginLeft:20}}>{paquete.precio}</Text>
+                            </View>
+                    )
+                    
                     })}
                 
                     {/* {carrito1 && carrito1.map(paquete=>
@@ -56,6 +82,7 @@ const Carrito=({carrito})=>{
                 </View>
             </View>
         </View>
+        </ScrollView>
             {/* <h1>Lista del carrito</h1>
             <div>
                 {carrito  && carrito.map(paquete=>
@@ -69,6 +96,7 @@ const Carrito=({carrito})=>{
                 </div>)}
                 <p>TOTAL: {total}</p>
             </div> */}
+        
         </>
     )
 }
