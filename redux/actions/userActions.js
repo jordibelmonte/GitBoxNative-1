@@ -1,4 +1,5 @@
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const userActions = {
     crearCuenta: (nuevoUsario) => {
@@ -39,7 +40,7 @@ const userActions = {
                 
                 dispatch({type: 'INICIAR_SESION', payload: {response: {...respuesta.data.response}}})
             } catch(err) {
-                localStorage.clear()
+                AsyncStorage.clear()
             }
         }
     },

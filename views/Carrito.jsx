@@ -1,25 +1,43 @@
 import { connect } from "react-redux";
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Text, View } from "react-native";
+import Loader from "./Loader";
+import { useState } from "react";
+import { FlatList } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Carrito=({carrito})=>{
-    console.log('carritooo')
+    
+    console.log("=00000000000000000000000000000000")
     console.log(carrito)
-    // if(!carrito){return <h1>loading..</h1> }
+    console.log("0000000000000000000000000000000")
     return(
         <>
         <View>
             <View >
                 <Text> Tu carrito</Text>
             </View>
-            <View >
+            <View style={{height:500,width:600}}>
                 <View >
-                    {carrito && carrito.map(paquete=>
+                <FlatList
+                data={carrito}
+                keyExtractor={({ _id},index) => _id}
+                renderItem={({ item }) => (
+                    <View style={{width:300,height:300}}>
+                        
+                        
+                            <Text style={{height:200,width:200, fontSize:20}}>{item.nombre}</Text>
+                       
+                       
+                    </View>
+                )}
+            />
+                    {/* {carrito1 && carrito1.map(paquete=>
                         <View>
-                            <View >
-                                <Text>{paquete.nombre}</Text>
-                                <Text>borrar</Text>
-                            </View>
+                            <View > */}
+                                {/* <Text>{paquete.nombre}</Text> */}
+                                {/* <Text>borrar</Text> */}
+                            {/* </View> */}
                             {/* <View className="carritoPaqueteContenido">
                                 <View id="carritoImagen">
                                     <View className="carritoImagen" style={{backgroundImage: `url(${paquete.imagen})`}}></View>
@@ -39,8 +57,7 @@ const Carrito=({carrito})=>{
                                      <Button className="buttonCarrito"><BsPlus/></Button>
                                 </View>
                             </View> */}
-                        </View>
-                    )}
+                        {/* </View>)} */}
                 </View>
             </View>
         </View>
@@ -62,9 +79,9 @@ const Carrito=({carrito})=>{
 }
 const mapStateToProps = state => {
     return {
-        carrito: state.carritoReducer.carrito
+        carrito:state.carritoReducer.carrito
     }
 }
 
 
-export default connect(mapStateToProps, null)(Carrito)
+export default connect(mapStateToProps,null)(Carrito)

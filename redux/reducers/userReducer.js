@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const initialState = {
     loggedUser: null
 }
@@ -10,7 +11,7 @@ const userReducer = (state = initialState, action) => {
                 loggedUser: action.payload.response
             }   
         case 'LOG_OUT':
-            localStorage.clear();
+            AsyncStorage.clear();
             return {
                 ...state,
                 loggedUser:null
