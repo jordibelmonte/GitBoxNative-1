@@ -58,13 +58,14 @@ const carritoReducer=(state=initialState,action)=>{
         case("CARRITO_LS"):
         // console.log("REDUCERRRRRRRRRRRRRRRRRRRRRRRRRRR")
         const aux3=JSON.parse(action.payload.carritoLS) 
+        const aux4=JSON.parse(action.payload.total) 
         // console.log(action.payload.total)
         // console.log(aux3[0])
         
             return{
                 ...state,
                 carrito: [...aux3],
-                total: action.payload.total
+                total: aux4
             }
         default:
             return state;

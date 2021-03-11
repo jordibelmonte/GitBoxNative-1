@@ -21,15 +21,17 @@ const carritoActions = {
     return async (dispatch, getState) => {
       setLS()
       dispatch({type:"ELIMINAR_DEL_CARRITO", payload: {_id,precio,cantidad}})
-      AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito));
-      AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
+      // AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito));
+      // AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
+      setLS(getState().carritoReducer.carrito,getState().carritoReducer.total)
     }
   },
   actualizarCarrito: ({_id},numero)=>{
     console.log(numero)
     return async (dispatch, getState) => {
-      AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito))
-      AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
+      // AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito))
+      // AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
+      setLS(getState().carritoReducer.carrito,getState().carritoReducer.total)
       dispatch({type:"ACTUALIZAR_CARRITO", payload: {_id,numero}})
     }
   },

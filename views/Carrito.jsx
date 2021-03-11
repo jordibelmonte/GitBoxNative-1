@@ -7,7 +7,7 @@ import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-han
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import carritoActions from "../redux/actions/carritoActions";
 
-const Carrito = ({ carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
+const Carrito = ({ navigation,carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
   const [carrito1, setCarrito1] = useState(null)
 
   useEffect(() => {
@@ -75,59 +75,20 @@ const Carrito = ({ carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
                         <Text style={{ width: 80, fontSize: 22, textAlign: 'right' }}>${paquete.precio}</Text>
                       </View>
                     )
-
                   })}
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Text>TOTAL</Text>
-                  <Text>{total === null ? 0 : total}</Text>
+                  <Text>{total}</Text>
                 </View>
-
               </View>
-
-              {/* {carrito1 && carrito1.map(paquete=>
-                        <View>
-                            <View > */}
-              {/* <Text>{paquete.nombre}</Text> */}
-              {/* <Text>borrar</Text> */}
-              {/* </View> */}
-              {/* <View className="carritoPaqueteContenido">
-                                <View id="carritoImagen">
-                                    <View className="carritoImagen" style={{backgroundImage: `url(${paquete.imagen})`}}></View>
-                                </View>
-                                <View id="carritoDescripcion">
-                                    <View>
-                                        <p> <BsFillPeopleFill/> Para {paquete.cantidadPersonas} personas o mas</p>
-                                        <p>Stock: {paquete.stock}</p>
-                                    </View>
-                                    <View>
-                                        <h3>${paquete.precio}</h3>
-                                    </View>
-                                </View>
-                                <View id="carritoCantidad">
-                                    <Button className="buttonCarrito"><BsDash/></Button>
-                                    <View style={{margin:"0 0.5vw"}}><h5 >x{paquete.cantidad}</h5></View>
-                                     <Button className="buttonCarrito"><BsPlus/></Button>
-                                </View>
-                            </View> */}
-              {/* </View>)} */}
             </View>
+          <TouchableOpacity style={{width:300, height:100}}>
+            <Text onPress={() => navigation.navigate('envio')}>Continuar</Text>
+          </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
-      {/* <h1>Lista del carrito</h1>
-            <div>
-                {carrito  && carrito.map(paquete=>
-                <div style={{display:"flex",justifyContent:"space-evenly",border:"solid blue",width:"100vh",height:"10vh"}}>
-                    <p>{paquete.nombre}</p> 
-                    <button style={{width:"15%"}} value={1} onClick={(e)=>actualizarCarrito(paquete,e.target.value)}>+</button>
-                    <button style={{width:"15%"}} value={-1} onClick={(e)=>actualizarCarrito(paquete,e.target.value)}>-</button>
-                    <button style={{width:"15%"}} onClick={()=>eliminarDelCarrito(paquete)}>borrar</button>
-                    <p>{paquete.cantidad}</p>
-                    <p>${paquete.precio*paquete.cantidad}</p>
-                </div>)}
-                <p>TOTAL: {total}</p>
-            </div> */}
 
     </>
   )

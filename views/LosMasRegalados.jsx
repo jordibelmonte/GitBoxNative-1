@@ -32,7 +32,7 @@ export default class App extends React.Component {
             <View style={{flexDirection:'row',paddingLeft:10}}>{[...Array(5)].map((m,i)=>{
                         const ratingValue = i +1
                             return (
-                                <Text>⭐</Text>
+                                <Text key={i}>⭐</Text>
                             )
                         })}</View>
             <Text style={{fontSize:25,fontWeight:'bold',paddingLeft:20}}>{item.precio}</Text>

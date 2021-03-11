@@ -1,13 +1,13 @@
-import React, {useRef, useState, useEffect} from 'react';
-import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {
-  View,
-  Text,
-  Dimensions,
-  StyleSheet,
-  TouchableOpacity,
-  Platform,
-} from 'react-native';
+// import React, {useRef, useState, useEffect} from 'react';
+// import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
+// import {
+//   View,
+//   Text,
+//   Dimensions,
+//   StyleSheet,
+//   TouchableOpacity,
+//   Platform,
+// } from 'react-native';
 
 // const ENTRIES1 = [
 //   {
@@ -32,78 +32,78 @@ import {
 //   },
 // ];
 
-const fotos = [{ img: 'https://fotos.subefotos.com/56c90e1f86df75fcfc6a019320c6deefo.png', text: 'Aventura', color: '#FFC715' }, { img: 'https://fotos.subefotos.com/32bf744cf1edec87692e8e32b04b89d8o.jpg', text: 'Blends', color: '#30d42a' }, { img: 'https://fotos.subefotos.com/26d409700fdaa30b2a9c9d51283b0fd8o.jpg', text: 'En casa', color: '#CA360C' }, { img: 'https://fotos.subefotos.com/654fee5dbf75e34d3e4b9d362705b774o.jpg', text: 'Entretenimiento', color: '#C7BBEC' }, { img: 'https://fotos.subefotos.com/e606178ce6f8e48f545dc3b053324f59o.jpg', text: 'Estadias', color: '#43DCB7' }, { img: 'https://i.postimg.cc/DfR65MtV/Estar-bien.jpg', text: 'Estar bien', color: '#B6B6EF' }, { img: 'https://fotos.subefotos.com/75ba75aa9a87f616e495467ec2ec2746o.jpg', text: 'Gastronomia', color: '#FF4F6D' }]
-const {width: screenWidth} = Dimensions.get('window');
+// const fotos = [{ img: 'https://fotos.subefotos.com/56c90e1f86df75fcfc6a019320c6deefo.png', text: 'Aventura', color: '#FFC715' }, { img: 'https://fotos.subefotos.com/32bf744cf1edec87692e8e32b04b89d8o.jpg', text: 'Blends', color: '#30d42a' }, { img: 'https://fotos.subefotos.com/26d409700fdaa30b2a9c9d51283b0fd8o.jpg', text: 'En casa', color: '#CA360C' }, { img: 'https://fotos.subefotos.com/654fee5dbf75e34d3e4b9d362705b774o.jpg', text: 'Entretenimiento', color: '#C7BBEC' }, { img: 'https://fotos.subefotos.com/e606178ce6f8e48f545dc3b053324f59o.jpg', text: 'Estadias', color: '#43DCB7' }, { img: 'https://i.postimg.cc/DfR65MtV/Estar-bien.jpg', text: 'Estar bien', color: '#B6B6EF' }, { img: 'https://fotos.subefotos.com/75ba75aa9a87f616e495467ec2ec2746o.jpg', text: 'Gastronomia', color: '#FF4F6D' }]
+// const {width: screenWidth} = Dimensions.get('window');
 
-const MyCarousel = props => {
-  const [entries, setEntries] = useState([]);
-  const carouselRef = useRef(null);
+// const MyCarousel = props => {
+//   const [entries, setEntries] = useState([]);
+//   const carouselRef = useRef(null);
 
-  const goForward = () => {
-    carouselRef.current.snapToNext();
-  };
+//   const goForward = () => {
+//     carouselRef.current.snapToNext();
+//   };
 
-  useEffect(() => {
-    setEntries(fotos);
-  }, []);
+//   useEffect(() => {
+//     setEntries(fotos);
+//   }, []);
 
-  const renderItem = ({item, index}, parallaxProps) => {
-    return (
-      <View style={styles.item} onPress={() => props.navigation.navigate('Paquetes')} key={item._id}>
-        <ParallaxImage
-          source={{uri: item.img}}
-          containerStyle={styles.imageContainer}
-          style={styles.image}
-          parallaxFactor={0.4}
-          {...parallaxProps}
+//   const renderItem = ({item, index}, parallaxProps) => {
+//     return (
+//       <View style={styles.item} onPress={() => props.navigation.navigate('Paquetes')} key={item._id}>
+//         <ParallaxImage
+//           source={{uri: item.img}}
+//           containerStyle={styles.imageContainer}
+//           style={styles.image}
+//           parallaxFactor={0.4}
+//           {...parallaxProps}
           
-        />
-        <Text style={styles.title} numberOfLines={2}>
-          {item.text}
-        </Text>
-      </View>
-    );
-  };
+//         />
+//         <Text style={styles.title} numberOfLines={2}>
+//           {item.text}
+//         </Text>
+//       </View>
+//     );
+//   };
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={goForward}>
-      </TouchableOpacity>
-      <Carousel
-        ref={carouselRef}
-        sliderWidth={screenWidth}
-        sliderHeight={screenWidth}
-        itemWidth={screenWidth - 60}
-        data={entries}
-        renderItem={renderItem}
-        hasParallaxImages={true}
-        loop={true}
-      />
-    </View>
-  );
-};
+//   return (
+//     <View style={styles.container}>
+//       <TouchableOpacity onPress={goForward}>
+//       </TouchableOpacity>
+//       <Carousel
+//         ref={carouselRef}
+//         sliderWidth={screenWidth}
+//         sliderHeight={screenWidth}
+//         itemWidth={screenWidth - 60}
+//         data={entries}
+//         renderItem={renderItem}
+//         hasParallaxImages={true}
+//         loop={true}
+//       />
+//     </View>
+//   );
+// };
 
-export default MyCarousel;
+// export default MyCarousel;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: '5%',
-    paddingBottom: '5%',
-/*     backgroundColor:"#050A1A", */
-  },
-  item: {
-    width: screenWidth - 180,
-    height: screenWidth - 20,
-  },
-  imageContainer: {
-    flex: 1,
-    marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
-    backgroundColor: 'white',
-    borderRadius: 2,
-  },
-  image: {
-    ...StyleSheet.absoluteFillObject,
-    resizeMode: 'cover',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: '5%',
+//     paddingBottom: '5%',
+// /*     backgroundColor:"#050A1A", */
+//   },
+//   item: {
+//     width: screenWidth - 180,
+//     height: screenWidth - 20,
+//   },
+//   imageContainer: {
+//     flex: 1,
+//     marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
+//     backgroundColor: 'white',
+//     borderRadius: 2,
+//   },
+//   image: {
+//     ...StyleSheet.absoluteFillObject,
+//     resizeMode: 'cover',
+//   },
+// });
