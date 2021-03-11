@@ -19,26 +19,22 @@ const Carrito=({carrito})=>{
             </View>
             <View style={{height:500,width:600}}>
                 <View >
-                <FlatList
+                {/* <FlatList
                 data={carrito}
-                keyExtractor={({ _id},index) => _id}
+                keyExtractor={({ _id},index) => `${_id}${index}`}
                 renderItem={({ item }) => (
                     <View style={{width:300,height:300}}>
-                        
-                        
-                            <Text style={{height:200,width:200, fontSize:20}}>{item.nombre}</Text>
-                       
-                       
+                        <Text style={{height:200,width:200, fontSize:20}}>{item.nombre}</Text>  
                     </View>
                 )}
-            />
-                    {/* {carrito1 && carrito1.map(paquete=>
+            /> */}  
+                    {carrito && carrito.map(paquete=>
                         <View>
-                            <View > */}
-                                {/* <Text>{paquete.nombre}</Text> */}
-                                {/* <Text>borrar</Text> */}
-                            {/* </View> */}
-                            {/* <View className="carritoPaqueteContenido">
+                            <View >
+                                <Text>{paquete.nombre}</Text>
+                                <Text>borrar</Text>
+                            </View>
+                            <View className="carritoPaqueteContenido">
                                 <View id="carritoImagen">
                                     <View className="carritoImagen" style={{backgroundImage: `url(${paquete.imagen})`}}></View>
                                 </View>
@@ -56,8 +52,8 @@ const Carrito=({carrito})=>{
                                     <View style={{margin:"0 0.5vw"}}><h5 >x{paquete.cantidad}</h5></View>
                                      <Button className="buttonCarrito"><BsPlus/></Button>
                                 </View>
-                            </View> */}
-                        {/* </View>)} */}
+                            </View>
+                        </View>)}
                 </View>
             </View>
         </View>
