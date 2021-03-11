@@ -11,22 +11,13 @@ import Carrito from './views/Carrito'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import carritoActions from './redux/actions/carritoActions';
 import { connect } from 'react-redux';
-const getMultiple = async () => {
+import userActions from './redux/actions/userActions';
 
-    let values
-    try {
-      values = await AsyncStorage.multiGet(['carrito', 'total'])
-    } catch(e) {
-      // read error
-    }
-    return values
-
-  }
-  
 const Stack = createStackNavigator()
-const Nav =({carritoDelLS})=>{
+const Nav =({carritoDelLS,loggedUser,logFromLS})=>{
     carritoDelLS()
-
+    {!loggedUser && logFromLS()}
+    console.log(loggedUser)
     return(
         <NavigationContainer>
             <Stack.Navigator screenOptions={{
@@ -36,7 +27,7 @@ const Nav =({carritoDelLS})=>{
                 }
             }}>
                 <Stack.Screen name='Home' component ={Home} />
-                <Stack.Screen name='registro' component ={Carrito} />
+                <Stack.Screen name='registro' component ={Registro} />
                 <Stack.Screen name='iniciarSesion' component ={IniciarSesion} />
                 <Stack.Screen name='paquete' component={Paquete}/>
                 <Stack.Screen name='paquetes' component={Paquetes} />
@@ -52,6 +43,7 @@ const mapStateToProps=(state)=>{
     }
   }
   const mapDispatchToProps={
+    logFromLS:userActions.logFromLS,
     carritoDelLS:carritoActions.carritoDelLS
   }
 export default connect(mapStateToProps,mapDispatchToProps)(Nav)

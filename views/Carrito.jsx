@@ -7,9 +7,13 @@ import { FlatList } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Carrito=({carrito})=>{
-    
+    const [carrito1,setCarrito1]=useState(null)
     console.log("=00000000000000000000000000000000")
-    console.log(carrito)
+    useEffect(() => {
+        setCarrito1(carrito)
+
+    }, ["",carrito])
+    console.log(carrito1)
     console.log("0000000000000000000000000000000")
     return(
         <>
@@ -19,19 +23,10 @@ const Carrito=({carrito})=>{
             </View>
             <View style={{height:500,width:600}}>
                 <View >
-                <FlatList
-                data={carrito}
-                keyExtractor={({ _id},index) => _id}
-                renderItem={({ item }) => (
-                    <View style={{width:300,height:300}}>
-                        
-                        
-                            <Text style={{height:200,width:200, fontSize:20}}>{item.nombre}</Text>
-                       
-                       
-                    </View>
-                )}
-            />
+                {carrito1&& carrito1.map((paquete) => {
+                    return (<View><Text>{paquete.nombre}</Text></View>)
+                    })}
+                
                     {/* {carrito1 && carrito1.map(paquete=>
                         <View>
                             <View > */}

@@ -6,6 +6,11 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'INICIAR_SESION':
+            AsyncStorage.setItem('nombre', action.payload.response.nombre)
+            AsyncStorage.setItem('token', action.payload.response.token)
+            AsyncStorage.setItem('imagen', action.payload.response.imagen)
+            AsyncStorage.setItem('id', action.payload.response.id)
+            AsyncStorage.setItem('googleUser', action.payload.response.googleUser)
             return {
                 ...state,
                 loggedUser: action.payload.response
@@ -22,6 +27,7 @@ const userReducer = (state = initialState, action) => {
                 loggedUser:action.payload
             }
         default:
+        
         return state
     }
 }
