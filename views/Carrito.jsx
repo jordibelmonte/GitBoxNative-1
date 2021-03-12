@@ -7,6 +7,7 @@ import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-han
 import carritoActions from "../redux/actions/carritoActions";
 import Header from "../views/Header";
 import { Icon } from "react-native-elements";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
   const [carrito1, setCarrito1] = useState(null)
@@ -15,7 +16,13 @@ const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCar
     setCarrito1(carrito)
     // actualizarCarrito()
   }, ["", carrito])
+  
+  
+  // useEffect(()=> {
+  //   if (total) total=0
+  //   AsyncStorage.clear()
 
+  // })
   const eliminarPaquete = (paquete) => {
     eliminarDelCarrito(paquete)
   }
@@ -82,14 +89,17 @@ const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCar
                     )
                   })}
                 </View>
-                <View style={{ flexDirection: 'row' }}>
-                  <Text>TOTAL</Text>
-                  <Text>{total}</Text>
+                <View style={{ flexDirection: 'row', width:300, justifyContent:"space-between",marginVertical:10}}>
+                  <Text style={{fontSize:27, fontWeight:'bold'}}>TOTAL</Text>
+                  <Text style={{fontSize:27, fontWeight:'bold', color:'red'}}>{`$${total}`}</Text>
                 </View>
               </View>
             </View>
-            <TouchableOpacity style={{ width: 300, height: 100 }}>
-              <Text onPress={() => navigation.navigate('envio')}>Continuar</Text>
+            <TouchableOpacity style={{ width: 180, height: 70, justifyContent:'center',alignItems:'center', marginTop:15,backgroundColor: '#FF2A2A',
+    paddingHorizontal: '5%',
+    paddingVertical: '2%',
+    borderRadius: 5, }}>
+              <Text style={{color:'white', fontSize:20,fontWeight:'bold',}} onPress={() => navigation.navigate('envio')}>Continuar</Text>
             </TouchableOpacity>
           </View>
         </View>

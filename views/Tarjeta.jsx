@@ -1,10 +1,10 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Alert, StyleSheet, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native'
+import { Alert, StyleSheet, KeyboardAvoidingView, Platform, SafeAreaView, ToastAndroid } from 'react-native'
 import LottieView from 'lottie-react-native'
 import CreditCardForm, { Button } from 'rn-credit-card'
 
-const Tarjeta = () => {
+const Tarjeta = (props) => {
 
   const formMethods = useForm({
     mode: 'onBlur',
@@ -18,7 +18,8 @@ const Tarjeta = () => {
   const { handleSubmit, formState } = formMethods
 
   function onSubmit(model) {
-    Alert.alert('Gracias por su compra! Vuelva pronto.')
+    ToastAndroid.show('¡Gracias por su compra!', ToastAndroid.TOP, 25, 50,ToastAndroid.LONG)
+    props.navigation.navigate('Home')
   }
 
   return (

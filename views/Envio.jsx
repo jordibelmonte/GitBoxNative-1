@@ -37,18 +37,30 @@ const Envio = ({ navigation,carrito, total, modificarRegalo }) => {
       <View style={{ width: '100%', alignItems: 'center' }}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Elegí un método de pago</Text>
         <View style={{ width: '95%', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', marginVertical: 15 }}>
-          <TouchableOpacity style={{ width: 150, borderColor: 'black', borderWidth: 2 }}>
-            <Text>Envío por mail</Text>
+          <TouchableOpacity style={{backgroundColor: '#FF2A2A',
+    paddingHorizontal: '5%',
+    paddingVertical: 10, width: 140, alignItems:'center', height: 58,justifyContent:'center', 
+    borderRadius: 5,}}>
+            <Text style={{color:'white', fontWeight:'bold',fontSize:15}}>Envío por mail</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{ width: 150, borderColor: 'black', borderWidth: 2 }}>
-            <Text>Retira por tienda fisica</Text>
+          <TouchableOpacity style={{backgroundColor: '#FF2A2A',
+    paddingHorizontal: '5%',
+    paddingVertical: 10, width: 140, alignItems:'center', 
+    borderRadius: 5,}}>
+            <Text style={{color:'white', fontWeight:'bold',textAlign:'center',fontSize:15}}>Retira por tienda fisica</Text>
           </TouchableOpacity>
         </View>
         <View style={{ alignItems: 'center' }}>
-          <Text>¿A quién se lo envías?</Text>
-          <View style={{ width: 300, flexDirection: 'row', justifyContent: 'space-around' }}>
-            <TouchableOpacity onPress={() => setVisible(!visible)}><Text>Es para regalar</Text></TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('tarjeta')}><Text>Es para mí</Text></TouchableOpacity>
+          <Text style={{fontSize:18,fontWeight:'bold'}}>¿A quién se lo envías?</Text>
+          <View style={{ width: 300, flexDirection: 'row', justifyContent: 'space-around', marginVertical:20 }}>
+            <TouchableOpacity style={{backgroundColor: '#FF2A2A',
+    paddingHorizontal: '5%',
+    paddingVertical: 10, width: 140, alignItems:'center', 
+    borderRadius: 5,}} onPress={() => setVisible(!visible)}><Text style={{color:'white', fontWeight:'bold',fontSize:15}}>Es para regalar</Text></TouchableOpacity>
+            <TouchableOpacity style={{backgroundColor: '#FF2A2A',
+    paddingHorizontal: '5%',
+    paddingVertical: 10, width: 140, alignItems:'center',
+    borderRadius: 5,}} onPress={() => navigation.navigate('tarjeta')}><Text style={{color:'white', fontWeight:'bold',fontSize:15}}>Es para mí</Text></TouchableOpacity>
           </View>
           <View>
             {visible
@@ -73,6 +85,10 @@ const Envio = ({ navigation,carrito, total, modificarRegalo }) => {
                   style={styles.inputs}
                   placeholderTextColor='white'
                 />
+                <TouchableOpacity onPress={() => navigation.navigate('tarjeta')} style={{backgroundColor: '#FF2A2A', 
+    paddingHorizontal: '5%',
+    paddingVertical: 10, width: 140, alignItems:'center', height: 58,justifyContent:'center', 
+    borderRadius: 5,marginTop:15, alignSelf:'center'}}><Text style={{color:'white', fontWeight:'bold',fontSize:15}}>Continuar</Text></TouchableOpacity>
               </View>
             }
           </View>
@@ -93,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 15,
     borderWidth: 2,
-    paddingHorizontal: '5%',
+    paddingHorizontal: '2%',
     paddingVertical: '5%',
     alignItems: 'center',
     marginTop: 10,

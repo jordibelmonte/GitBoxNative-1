@@ -17,9 +17,9 @@ const Paquete = (props) => {
     props.filtraPaquete(props.route.params.paqueteId)
   }, [])
 
-  useEffect(() => {
-    if (props.paqueteId) { obtenerProductosPorPaquete(props.paqueteId._id) }
-  }, [])
+  // useEffect(() => {
+  //   if (props.paqueteId) { obtenerProductosPorPaquete(props.paqueteId._id) }
+  // }, [])
 
   if (!props.paqueteId) { return <Loader /> }
   const agregarCarrito = () => {

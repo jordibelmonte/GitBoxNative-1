@@ -33,15 +33,23 @@ const Paquetes = (props) => {
                 <View style={styles.packageDataContainer}>
                   <View style={styles.packageData}>
                     <View style={styles.starsAndAssessment}>
-                      <Text>ESTRELLAS</Text>
+                    <View style={{flexDirection:'row'}}>{[...Array(5)].map((m,i)=>{
+                        const ratingValue = i +1
+                            return (
+                                <Text key={i}>⭐</Text>
+                            )
+                        })}</View>
                     </View>
                     <View style={styles.packageDescription}>
                       <Text>{`${paquete.descripcion.slice(0,65)}...`}</Text>
                     </View>
                     <Text style={styles.precio}>$ {paquete.precio}</Text>
                   </View>
-                  <View>
-                    <Text style={{color:'red',fontSize:30,marginRight:20, marginTop:5}} onPress={()=>props.navigation.navigate('paquete',{paqueteId:paquete._id})}>Ver</Text>
+                  <View style={{backgroundColor: '#FF2A2A', 
+    paddingHorizontal: '5%',
+    paddingVertical: 10, width: 100,marginRight:20, alignItems:'center', height: 58,justifyContent:'center', 
+    borderRadius: 5,marginTop:15, alignSelf:'center'}}>
+                    <Text style={{color: 'white',fontSize:25,fontWeight:'bold'}} onPress={()=>props.navigation.navigate('paquete',{paqueteId:paquete._id})}>Ver</Text>
                   </View>
                 </View>
               </TouchableOpacity>
