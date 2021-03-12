@@ -42,29 +42,32 @@ const IniciarSesion = (props) => {
   }
 
   return (
-    <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: '100%', justifyContent: 'space-evenly', alignItems: 'center'}}>
-      <Header />
-        <View style={{ alignItems: 'center' }}>
-          <Text style={{ fontSize: 30, fontWeight: 'bold', marginBottom: 25 }}>Iniciar sesión</Text>
-          <TextInput
-            placeholder='Correo electrónico'
-            onChangeText={(value) => leerInput('cuenta', value)}
-            style={styles.inputs}
-            placeholderTextColor='white'
-          />
-          <TextInput
-            placeholder='Contraseña'
-            secureTextEntry
-            onChangeText={(value) => leerInput('password', value)}
-            style={styles.inputs}
-            placeholderTextColor='white'
-          />
-          <TouchableOpacity onPress={validar}>
-            <View style={styles.boton} >
-              <Text Text>Inciar sesion</Text>
-            </View>
-          </TouchableOpacity>
+    <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+
+      <View style={{ alignItems: 'center', flex: .9 }}>
+        <View style={{marginLeft:-32, marginBottom: 50}}>
+          <Header />
         </View>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', marginBottom: 25 }}>Iniciar sesión</Text>
+        <TextInput
+          placeholder='Correo electrónico'
+          onChangeText={(value) => leerInput('cuenta', value)}
+          style={styles.inputs}
+          placeholderTextColor='white'
+        />
+        <TextInput
+          placeholder='Contraseña'
+          secureTextEntry
+          onChangeText={(value) => leerInput('password', value)}
+          style={styles.inputs}
+          placeholderTextColor='white'
+        />
+        <TouchableOpacity onPress={validar}>
+          <View style={styles.boton} >
+            <Text Text>Inciar sesion</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </ImageBackground >
   )
 
