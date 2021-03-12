@@ -4,10 +4,10 @@ import { Button, ImageBackground, Text, View } from "react-native";
 import Loader from "./Loader";
 import { useState } from "react";
 import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import carritoActions from "../redux/actions/carritoActions";
+import Header from "../views/Header";
 
-const Carrito = ({ navigation,carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
+const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
   const [carrito1, setCarrito1] = useState(null)
 
   useEffect(() => {
@@ -23,8 +23,10 @@ const Carrito = ({ navigation,carrito, total, actualizarCarrito, eliminarDelCarr
   return (
     <>
       <ScrollView>
+        <View style={{marginTop:20}}>
+          <Header />
+        </View>
         <View style={{ flex: 1, paddingBottom: 50, alignItems: 'center' }}>
-
           <View >
             <Text style={{ fontSize: 40, fontWeight: 'bold', paddingVertical: 20 }}> Tu carrito</Text>
           </View>
@@ -83,9 +85,9 @@ const Carrito = ({ navigation,carrito, total, actualizarCarrito, eliminarDelCarr
                 </View>
               </View>
             </View>
-          <TouchableOpacity style={{width:300, height:100}}>
-            <Text onPress={() => navigation.navigate('envio')}>Continuar</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={{ width: 300, height: 100 }}>
+              <Text onPress={() => navigation.navigate('envio')}>Continuar</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

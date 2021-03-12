@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, Alert, ToastAndroid, Image, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 import userActions from '../redux/actions/userActions';
+import Header from './Header';
 
 
 const Registro = (props) => {
@@ -55,27 +56,34 @@ const Registro = (props) => {
 
   return (
     <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: '100%', justifyContent: 'center' }}>
+        <Header/>
       <View style={styles.vista}>
+        <Text style={{fontSize: 30, fontWeight:'bold', marginBottom:25}}>Regístrate</Text>
         <TextInput
           placeholder='Nombre'
           onChangeText={(value) => leerInput('nombre', value)}
           style={styles.inputs}
+          placeholderTextColor='white'
         />
         <TextInput
           placeholder='Apellido'
           onChangeText={(value) => leerInput('apellido', value)}
           style={styles.inputs}
+          placeholderTextColor='white'
+          
         />
         <TextInput
-          placeholder='cuenta'
+          placeholder='Correo electrónico'
           onChangeText={(value) => leerInput('cuenta', value)}
           style={styles.inputs}
+          placeholderTextColor='white'
         />
         <TextInput
-          placeholder='Password'
+          placeholder='Contraseña'
           secureTextEntry
           onChangeText={(value) => leerInput('password', value)}
           style={styles.inputs}
+          placeholderTextColor='white'
         />
       <TouchableOpacity onPress={validar}>
         <View style={styles.boton} >
@@ -88,17 +96,27 @@ const Registro = (props) => {
 }
 const styles = StyleSheet.create({
   vista: {
+    flex:.9,
     justifyContent: 'center',
     alignItems: 'center'
   },
   inputs: {
     backgroundColor: '#fafafa',
-    color: 'black',
-    width: '70%',
+    color: 'white',
+    fontSize:50,
+    width: 280,
     marginBottom: '5%',
     padding: 10,
-    borderRadius: 8,
-    fontSize: 15
+    borderRadius: 10,
+    fontSize: 15,
+    borderWidth: 2,
+    paddingHorizontal: '5%',
+    paddingVertical: '5%',
+    alignItems: 'center',
+    marginTop: 10,
+    borderColor: 'white',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,.3)',
   },
   boton: {
     backgroundColor: 'white',

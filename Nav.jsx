@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, Text, View } from 'react-native';
+import {StatusBar} from 'react-native';
 import Home from './views/Home';
 import Registro from './views/Registro'
 import IniciarSesion from './views/IniciarSesion'
@@ -20,6 +20,7 @@ const Nav = ({ navigation, carritoDelLS, loggedUser, logFromLS }) => {
   console.log(loggedUser)
   return (
     <NavigationContainer>
+      <StatusBar hidden={false}  />
       <Stack.Navigator screenOptions={{
         headerShown: false
       }}>
