@@ -6,7 +6,6 @@ import Header from './Header';
 
 
 const Registro = (props) => {
-  // console.log(props)
   const [error, setError] = useState({})
   const [nuevoUsario, setNuevoUsario] = useState({
     nombre: '',

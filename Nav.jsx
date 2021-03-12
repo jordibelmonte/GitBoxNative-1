@@ -12,12 +12,12 @@ import carritoActions from './redux/actions/carritoActions';
 import { connect } from 'react-redux';
 import userActions from './redux/actions/userActions';
 import Envio from './views/Envio';
+import Tarjeta from './views/Tarjeta';
 
 const Stack = createStackNavigator()
 const Nav = ({ navigation, carritoDelLS, loggedUser, logFromLS }) => {
   carritoDelLS()
   { !loggedUser && logFromLS() }
-  console.log(loggedUser)
   return (
     <NavigationContainer>
       <StatusBar hidden={false}  />
@@ -31,6 +31,7 @@ const Nav = ({ navigation, carritoDelLS, loggedUser, logFromLS }) => {
         <Stack.Screen name='paquetes' component={Paquetes} />
         <Stack.Screen name='carrito' component={Carrito} />
         <Stack.Screen name='envio' component={Envio} />
+        <Stack.Screen name='tarjeta' component={Tarjeta} />
       </Stack.Navigator>
     </NavigationContainer>
   )

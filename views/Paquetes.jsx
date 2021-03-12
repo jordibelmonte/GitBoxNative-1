@@ -3,58 +3,20 @@ import { Dimensions, ImageBackground, StyleSheet, Text, TextInput, View } from '
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import paqueteActions from '../redux/actions/paqueteActions'
-// import { FlatList } from 'react-native-gesture-handler';
-// import Loader from './Loader'
-// import TarjetaPaquete from './TarjetaPaquete'
 
 const Paquetes = (props) => {
-  /* const paquetes = props.todosLosPaquetes.response */
-
-  
-  // console.log(props.route.params.categoria)
-
   const [valor, setValor] = useState(false)
   const [categoria, setCategoria] = useState(true)
   const [filterValue, setFilterValue] = useState("");
   const [nombreCategoria, setNombreCategoria] = useState(props.route.params.categoria)
 
-
-  // const buscando = (value) => {
-  //   setFilterValue(value)
-  //   props.filtrarPaquetes(props.route.params.categoria)
-  // }
-
   useEffect(() => {
-    /*  if(props.paquetesFiltrados.lenght ===0){
-       const pepe = props.filtrarPaquetes('Aventura')
-       
-     } */
     props.filtrarPaquetes(filterValue)
   }, [filterValue])
-
-  // props.filtrarPaquetes(props.route.params.categoria)
-  //   const [filterValue,setFilterValue]=useState("");
-  // <TextInput placeholder="Categoria" 
-  //                     onChangeText={(value)=>setFilterValue(value)} 
-  //                      value={filterValue} />
-
-  // if (!props.route.params.categoria && !valor) {
-  //   paquetes = props.todosLosPaquetes
-  // } else if (!categoria || valor) {
-  //   paquetes = props.paquetesFiltrados
-  // }
-
-  // if (categoria && props.route.params.categoria) {
-  //   props.filtrarPaquetes(props.route.params.categoria)
-  //   setCategoria(false)
-  // }
-
 
   return (
     <View style={styles.viewAll}>
       <ScrollView style={styles.scroll}>
-        {/* <TextInput type='text' placeholder="HOLA" value={filterValue} onChangeText={(value) => setFilterValue(value)}></TextInput> */}
-        {/* <Text>{(location.categoria && !valor) && location.categoria}</Text> */}
         <View style={styles.packagesContainer}>
           {props.todosLosPaquetes && props.todosLosPaquetes.filter((paquete) => paquete.categoria === nombreCategoria).map(paquete => {
             return (

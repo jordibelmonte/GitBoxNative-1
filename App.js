@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Nav from './Nav'
 import { Provider } from "react-redux"
@@ -8,10 +8,11 @@ import thunk from "redux-thunk"
 import mainReducer from "./redux/reducers/mainReducer"
 
 const App = () => {
+
   const myStore = createStore(mainReducer, applyMiddleware(thunk))
   return (
     <Provider store={myStore}>
-      <Nav/>
+      <Nav />
     </Provider>
   )
 }

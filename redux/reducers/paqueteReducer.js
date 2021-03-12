@@ -33,6 +33,26 @@ const paqueteReducer = (state = initialState, action) => {
         ...state,
         paquetesMasRegalados: action.payload
       }
+    case 'ENVIAR_COMENTARIO':
+
+      return {
+        ...state,
+        paquetePorId: { ...action.payload, promedio: state.paquetePorId.promedio },
+        todosLosPaquetes: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
+      }
+    case 'ELIMINAR_COMENTARIO':
+      return {
+        ...state,
+        paquetePorId: { ...action.payload, promedio: state.paquetePorId.promedio },
+        todosLosPaquetes: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
+      }
+    case 'EDITAR_COMENTARIO':
+      console.log(action.payload)
+      return {
+        ...state,
+        paquetePorId: { ...action.payload, promedio: state.paquetePorId.promedio },
+        todosLosPaquetes: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
+      }
     default:
       return state;
   }

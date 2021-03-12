@@ -8,14 +8,11 @@ import { connect } from 'react-redux'
 import userActions from '../redux/actions/userActions'
 
 const Home = (props) => {
-  console.log('HOME')
-  if (props.loggedUser) console.log(props.loggedUser.nombre)
-
   return (
     <ScrollView>
       <View style={{ flex: 1 }}>
         <ImageBackground source={{ uri: 'https://fotos.subefotos.com/e719e5d0fda1b617dd60b277756e64c7o.jpg' }} resizeMode='cover' style={{ width: '100%', height: 736, justifyContent: 'center' }}>
-          <View style={{ marginTop: -25, marginBottom:20 }} >
+          <View style={{ marginTop: -25, marginBottom: 20 }} >
             <Header navigation={props.navigation} />
           </View>
           <View style={styles.contenedor}>
@@ -53,8 +50,7 @@ const Home = (props) => {
             </View>
           }
         </ImageBackground>
-        <View style={{ backgroundColor: '#dcbdbd' }}>
-
+        <View style={{ backgroundColor: '#D8D8D8' }}>
           <Text style={{ color: '#464646', fontSize: 40, paddingLeft: '5%', paddingVertical: '5%', fontWeight: 'bold' }}>Categorias</Text>
           <Prueba2 navigation={props.navigation} />
           {/* <Prueba navigation={props.navigation}/> */}

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import regaloActions from "../redux/actions/regaloActions";
 import Header from './Header';
 
-const Envio = ({ carrito, total, modificarRegalo }) => {
+const Envio = ({ navigation,carrito, total, modificarRegalo }) => {
   const [tipoEnvio, setTipoEnvio] = useState("")
   const [paraQuien, setParaQuien] = useState("")
   const [mailDestinatario, setMailDestinatario] = useState("");
@@ -48,28 +48,28 @@ const Envio = ({ carrito, total, modificarRegalo }) => {
           <Text>¿A quién se lo envías?</Text>
           <View style={{ width: 300, flexDirection: 'row', justifyContent: 'space-around' }}>
             <TouchableOpacity onPress={() => setVisible(!visible)}><Text>Es para regalar</Text></TouchableOpacity>
-            <TouchableOpacity><Text>Es para mí</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('tarjeta')}><Text>Es para mí</Text></TouchableOpacity>
           </View>
           <View>
             {visible
               && <View>
                 <TextInput
                   placeholder='De:'
-                  onChangeText={(value) => leerInput('cuenta', value)}
+                  // onChangeText={(value) => leerInput('cuenta', value)}
                   style={styles.inputs}
                   placeholderTextColor='white'
                 />
                 <TextInput
                   placeholder='Para:'
                   secureTextEntry
-                  onChangeText={(value) => leerInput('password', value)}
+                  // onChangeText={(value) => leerInput('password', value)}
                   style={styles.inputs}
                   placeholderTextColor='white'
                 />
                 <TextInput
                   placeholder='Mensaje:'
                   secureTextEntry
-                  onChangeText={(value) => leerInput('password', value)}
+                  // onChangeText={(value) => leerInput('password', value)}
                   style={styles.inputs}
                   placeholderTextColor='white'
                 />

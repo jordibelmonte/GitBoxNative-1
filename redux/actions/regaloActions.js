@@ -7,7 +7,6 @@ const regaloActions={
         }
     },
     enviarRegalo:()=>{
-        console.log("entro e enviar regalo")
         return async(dispatch,getState)=>{
             try {
                 const response= await axios.post(`http://localhost:4000/api/regalo`, getState().regaloReducer.regalo,
@@ -16,7 +15,6 @@ const regaloActions={
                       Authorization: `Bearer ${getState().userReducer.loggedUser.token}`
                     }
                   })
-                console.log(response.data)
               } catch (error) {
                 console.log('ERROR AL ENVIAR REGALO')
               }
@@ -25,7 +23,6 @@ const regaloActions={
     obtenerRegalo:(_id)=>{
         return async(dispatch, getState) => {
         const response= await axios.get(`http://localhost:4000/api/regalos/${_id}`)
-        console.log(response)
     }
     }
 }

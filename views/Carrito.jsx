@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import carritoActions from "../redux/actions/carritoActions";
 import Header from "../views/Header";
+import { Icon } from "react-native-elements";
 
 const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCarrito }) => {
   const [carrito1, setCarrito1] = useState(null)
@@ -23,7 +24,7 @@ const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCar
   return (
     <>
       <ScrollView>
-        <View style={{marginTop:20}}>
+        <View style={{ marginTop: 20 }}>
           <Header />
         </View>
         <View style={{ flex: 1, paddingBottom: 50, alignItems: 'center' }}>
@@ -37,8 +38,10 @@ const Carrito = ({ navigation, carrito, total, actualizarCarrito, eliminarDelCar
                 return (<View key={`a${paquete._id}`}>
 
                   <View style={{ marginTop: 18, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: 'coral', marginLeft: 15, marginRight: 15, borderTopEndRadius: 10, borderTopStartRadius: 10, height: 30 }} >
-                    <Text>HOLA</Text>
-                    <Text onPress={() => eliminarPaquete(paquete)}>TACHO</Text>
+                    <Text>{paquete.nombre}</Text>
+                    <TouchableOpacity onPress={() => eliminarPaquete(paquete)}>
+                      <Icon name='delete' />
+                    </TouchableOpacity>
                   </View>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginLeft: 15, marginRight: 15 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 18 }}>

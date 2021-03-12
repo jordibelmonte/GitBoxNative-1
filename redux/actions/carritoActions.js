@@ -27,7 +27,6 @@ const carritoActions = {
     }
   },
   actualizarCarrito: ({_id},numero)=>{
-    console.log(numero)
     return async (dispatch, getState) => {
       // AsyncStorage.setItem("carrito",JSON.stringify(getState().carritoReducer.carrito))
       // AsyncStorage.setItem("total",JSON.stringify(getState().carritoReducer.total));
