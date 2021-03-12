@@ -36,12 +36,12 @@ const Paquetes = (props) => {
                       <Text>ESTRELLAS</Text>
                     </View>
                     <View style={styles.packageDescription}>
-                      <Text>{paquete.descripcion}</Text>
+                      <Text>{`${paquete.descripcion.slice(0,65)}...`}</Text>
                     </View>
                     <Text style={styles.precio}>$ {paquete.precio}</Text>
                   </View>
                   <View>
-                    <Text style={{color:'red',fontSize:30}} onPress={()=>props.navigation.navigate('paquete',{paqueteId:paquete._id})}>Ver</Text>
+                    <Text style={{color:'red',fontSize:30,marginRight:20, marginTop:5}} onPress={()=>props.navigation.navigate('paquete',{paqueteId:paquete._id})}>Ver</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     marginTop: 14
   },
   packageDescription: {
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     height: 40
   },

@@ -18,7 +18,7 @@ const Paquete = (props) => {
   }, [])
 
   useEffect(() => {
-    if (props.paquetePorId) { obtenerProductosPorPaquete(props.paquetePorId._id) }
+    if (props.paqueteId) { obtenerProductosPorPaquete(props.paqueteId._id) }
   }, [])
 
   if (!props.paqueteId) { return <Loader /> }
@@ -27,8 +27,13 @@ const Paquete = (props) => {
     props.navigation.navigate("carrito")
   }
 
-  if (props.loggedUser) console.log(props.loggedUser)
-
+  let promedioValoraciones = 0
+  var valoracionPaquete = 0
+  if (props.paqueteId) props.paqueteId.valoracion.map(valoracion => {
+    valoracionPaquete = valoracionPaquete + valoracion.valor
+  })
+  promedioValoraciones = (valoracionPaquete / props.paqueteId.valoracion.length)
+  
   const leerInput = (nombre, nuevoComentario) => {
     setComentario({
       ...comentario,
@@ -40,7 +45,7 @@ const Paquete = (props) => {
       [nombre]: nuevoComentario
     })
   }
-
+  
   const enviarComentario = () => {
     if (!props.loggedUser) {
       ToastAndroid.show('Login successful', ToastAndroid.TOP, 25, 50)
@@ -52,24 +57,25 @@ const Paquete = (props) => {
       // document.getElementById("inputComentario").value = ""
     }
   }
-
-
-
+  
+  console.log(props.paqueteId)
+  console.log(promedioValoraciones)
+  
   return (
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.containerKeyboard}>
+    style={styles.containerKeyboard}>
       <ScrollView>
-        <View style={{marginTop: 20}}>
+        <View style={{ marginTop: 20 }}>
           <Header />
         </View>
         <View style={styles.container}>
           <View style={styles.titulo}>
             <Text style={styles.tituloTitulo}>{props.paqueteId.nombre}</Text>
-            <Text style={styles.tituloPuntuacion}>4.65⭐</ Text>
+            <Text style={styles.tituloPuntuacion}>{promedioValoraciones.toFixed(2)}⭐</ Text>
           </View>
           <View style={styles.imageContainer}>
             <View style={styles.descripcionContenedor}>
-              <Text style={styles.descripcion}>{props.paqueteId.descripcion}</Text>
+              <Text style={styles.descripcion}>{props.paqueteId.descripcion.slice(0,20)}</Text>
             </View>
             <Image source={{ uri: `${props.paqueteId.imagen}` }} style={styles.image} />
           </View>

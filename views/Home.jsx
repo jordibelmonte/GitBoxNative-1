@@ -31,7 +31,7 @@ const Home = (props) => {
           </View>
           {props.loggedUser
             ? <TouchableOpacity onPress={() => props.logOut()}>
-              <View style={styles.boton2}>
+              <View style={{backgroundColor: 'rgba(0,0,0,.5)', borderWidth: 2, width: 160, height: 50, paddingHorizontal: '10%', justifyContent: 'center', paddingVertical:'7%', alignItems: 'center', borderRadius: 5, marginTop: 50,marginBottom:-40,marginLeft:70,borderColor: 'white'}}>
                 <Text style={{ color: 'white', fontSize: 20, width: 120, textAlign: 'center', fontWeight: 'bold' }}>Cerrar sesión</Text>
               </View>
             </TouchableOpacity>
