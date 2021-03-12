@@ -51,31 +51,29 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
   }
 
   return (
-    <>
-      {loggedUser.id === comentario.idUsuario
-        && <View style={{ flexDirection: 'row' }} key={comentario._id}>
-          <View>
-            <ImageBackground resizeMode='cover' style={{ width: 100, height: 100, borderColor: 'black', borderWidth: 2 }} source={{ uri: `${comentario.imagenUsuario}` }}></ImageBackground>
-            <Text>{comentario.nombreUsuario}</Text>
+    <View style={{ borderBottomColor: 'black', borderRadius: 12, borderWidth: 1, height: 40, alignItems: 'center', marginBottom: 10 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: 350, height: 40, alignItems: 'center' }} key={comentario._id}>
+        <View style={{ flexDirection: 'row', width: 200 }}>
+          <View style={{ alignItems: 'center' }}>
+            <Text style={{ fontWeight: 'bold', fontSize: 16, width: 80 }}>{`${comentario.nombreUsuario}:`}</Text>
           </View>
           <View>
             <Text>{comentario.comentarioUsuario}</Text>
           </View>
+        </View>
 
-          {!visible ?
-            <View>
-
-
+        {loggedUser.id === comentario.idUsuario &&
+          <View>
+            <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity onPress={modificarComentario}>
-                <Icon name='edit' />
+                <Icon name='edit' iconStyle={{ fontSize: 25, color: '#FF2a2a' }} />
               </TouchableOpacity>
               <TouchableOpacity onPress={enviarComentarioAEliminar}>
-                <Icon name='delete' />
+                <Icon name='delete' iconStyle={{ fontSize: 25, color: '#FF2a2a' }} />
               </TouchableOpacity>
-
             </View>
 
-            : <View>
+            <View>
               <TextInput defaultValue={comentario.comentarioUsuario} onChange={modificarComentario} name="comentarioEditado"></TextInput>
               <TouchableOpacity onPress={actualizarComentario}>
                 <Icon name='check' />
@@ -84,11 +82,12 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
                 <Icon name='x' />
               </TouchableOpacity>
 
+            </View>
+          </View>
+          }
+      </View>
 
-            </View>}
-        </View>
-      }
-    </>
+    </View>
   )
 }
 

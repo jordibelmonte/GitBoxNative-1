@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Loader from "./views/Loader";
 import { Icon } from 'react-native-elements';
 import Comentario from './views/Comentario';
+import Header from './views/Header';
 
 const Paquete = (props) => {
   const [valor, setValor] = useState(0)
@@ -43,7 +44,7 @@ const Paquete = (props) => {
   const enviarComentario = () => {
     if (!props.loggedUser) {
       ToastAndroid.show('Login successful', ToastAndroid.TOP, 25, 50)
-        props.navigation.navigate("iniciarSesion")
+      props.navigation.navigate("iniciarSesion")
     } else if (!comentario.comentarioUsuario) {
       ToastAndroid.show('Login successful', ToastAndroid.TOP, 25, 50)
     } else {
@@ -58,6 +59,9 @@ const Paquete = (props) => {
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.containerKeyboard}>
       <ScrollView>
+        <View style={{marginTop: 20}}>
+          <Header />
+        </View>
         <View style={styles.container}>
           <View style={styles.titulo}>
             <Text style={styles.tituloTitulo}>{props.paqueteId.nombre}</Text>
@@ -88,9 +92,9 @@ const Paquete = (props) => {
           </View>
           <View>
           </View>
-          <View style={{ flexDirection: 'row' }}>
-            <TextInput name='comentarioUsuario' onChangeText={value => leerInput('comentarioUsuario',value)} placeholder='Ingrese un comentario'></TextInput>
-            <Icon name='send' onPress={() => { enviarComentario() }} />
+          <View style={{ flexDirection: 'row', marginTop: 25, alignItems: 'center' }}>
+            <TextInput style={{ borderBottomWidth: 1, marginRight: 15, height: 40 }} name='comentarioUsuario' onChangeText={value => leerInput('comentarioUsuario', value)} placeholder='Ingrese un comentario'></TextInput>
+            <Icon name='send' iconStyle={{ fontSize: 25, color: '#FF2a2a' }} onPress={() => { enviarComentario() }} />
           </View>
           <View style={styles.opiniones}>
             {props.paqueteId.opiniones.length === 0
@@ -100,7 +104,7 @@ const Paquete = (props) => {
               </View>
               : props.paqueteId.opiniones.map(opinion => {
                 return (
-                  <Comentario comentario={opinion} key={`op${opinion._id}`}/>
+                  <Comentario comentario={opinion} key={`op${opinion._id}`} />
                 )
               })
             }
@@ -214,6 +218,7 @@ const styles = StyleSheet.create({
   },
   textoAcercaDe: {
     fontSize: 20,
+    marginBottom: 8
   },
   imagenTarjetas: {
     marginBottom: '5%',
